@@ -7,6 +7,16 @@
 
 import Foundation
 
-class CharacterViewModel {
+class CharactersViewModel {
+    weak var coordinator: CharactersCoordinator?
+    var service: CharactersServiceable?
     
+    func getCaracters(completion: @escaping (Result<Characters, RequestError>) -> Void) {
+        Task(priority: .background) {
+            guard let result = await service?.getCharacters() else {
+                return
+            }
+            completion(result)
+        }
+    }
 }

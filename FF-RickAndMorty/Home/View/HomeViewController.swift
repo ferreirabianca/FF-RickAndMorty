@@ -8,15 +8,14 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    var service: CharactersServiceable?
+    //MARK: - Properties
+    var viewModel: HomeViewModel?
     
-    //MARK: - LazyVars
+    //MARK: - Views
     lazy var charactersView: HomeCategoryView = {
         let view = HomeCategoryView()
         view.setupView(title: "Personagens", imageName: "characters-home-icon")
         view.backgroundColor = .blue.withAlphaComponent(0.3)
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(getCharacter))
-        view.addGestureRecognizer(gesture)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -38,15 +37,6 @@ class HomeViewController: UIViewController {
     }()
     
     //MARK: - LifeCycle
-    init(service: CharactersServiceable) {
-        super.init(nibName: nil, bundle: nil)
-        self.service = service
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -58,24 +48,9 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    func getCharacters(completion: @escaping (Result<Character, RequestError>) -> Void) {
-        Task(priority: .background) {
-            let result = await service?.getCaracter(id: 2)
-            switch result {
-            case .success(let success):
-                print(success.name)
-            case .failure(let failure):
-                print(failure)
-            case .none:
-                break;
-            }
-        }
-    }
-    
-    @objc func getCharacter(_ sender: Any) {
-        getCharacters { result in
-            print(result)
-        }
+    //MARK: - objc Functions
+    @objc func didTapCharacters(_ sender: Any) {
+        viewModel?.gotoCharacters()
     }
     
     //MARK: - Private Functions
@@ -85,6 +60,7 @@ class HomeViewController: UIViewController {
         view.addSubview(episodesView)
         
         setupConstraints()
+        setupTapGestures()
     }
     
     private func setupConstraints() {
@@ -104,5 +80,10 @@ class HomeViewController: UIViewController {
             episodesView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             episodesView.heightAnchor.constraint(equalToConstant: 100),
         ])
+    }
+    
+    private func setupTapGestures() {
+        let charactersTap = UITapGestureRecognizer(target: self, action: #selector(didTapCharacters))
+        charactersView.addGestureRecognizer(charactersTap)
     }
 }
