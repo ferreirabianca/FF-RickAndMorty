@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438B92B34AFE200E2F052 /* Endpoint.swift */; };
+		F19438BC2B34B0C200E2F052 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438BB2B34B0C200E2F052 /* RequestError.swift */; };
+		F19438BE2B34B18F00E2F052 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438BD2B34B18F00E2F052 /* RequestMethod.swift */; };
+		F19438C02B34B1AB00E2F052 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438BF2B34B1AB00E2F052 /* HTTPClient.swift */; };
+		F19438C32B34B53C00E2F052 /* CharactersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438C22B34B53C00E2F052 /* CharactersEndpoint.swift */; };
+		F19438C62B34B64000E2F052 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438C52B34B64000E2F052 /* CharactersService.swift */; };
 		F1A1C2AA2B33397000FF22ED /* HomeCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A1C2A92B33397000FF22ED /* HomeCategoryView.swift */; };
 		F1A5E41B2B31E5BA003C13DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5E41A2B31E5BA003C13DE /* AppDelegate.swift */; };
 		F1A5E41D2B31E5BA003C13DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5E41C2B31E5BA003C13DE /* SceneDelegate.swift */; };
@@ -20,6 +26,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F19438B92B34AFE200E2F052 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		F19438BB2B34B0C200E2F052 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		F19438BD2B34B18F00E2F052 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		F19438BF2B34B1AB00E2F052 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		F19438C22B34B53C00E2F052 /* CharactersEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersEndpoint.swift; sourceTree = "<group>"; };
+		F19438C52B34B64000E2F052 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		F1A1C2A92B33397000FF22ED /* HomeCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryView.swift; sourceTree = "<group>"; };
 		F1A5E4172B31E5BA003C13DE /* FF-RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FF-RickAndMorty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A5E41A2B31E5BA003C13DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +57,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F19438B52B347D8600E2F052 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F19438C42B34B63400E2F052 /* Service */,
+				F19438C12B34B53000E2F052 /* Endpoints */,
+				F19438B82B34AFD900E2F052 /* Base */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F19438B82B34AFD900E2F052 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F19438B92B34AFE200E2F052 /* Endpoint.swift */,
+				F19438BB2B34B0C200E2F052 /* RequestError.swift */,
+				F19438BD2B34B18F00E2F052 /* RequestMethod.swift */,
+				F19438BF2B34B1AB00E2F052 /* HTTPClient.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F19438C12B34B53000E2F052 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				F19438C22B34B53C00E2F052 /* CharactersEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		F19438C42B34B63400E2F052 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F19438C52B34B64000E2F052 /* CharactersService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		F1A1C2A82B3337F500FF22ED /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +121,7 @@
 		F1A5E4192B31E5BA003C13DE /* FF-RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				F19438B52B347D8600E2F052 /* Network */,
 				F1A5E4282B31E5BC003C13DE /* Info.plist */,
 				F1A5E4312B31E6E2003C13DE /* Coordinator */,
 				F1DE5CE12B338A5F00226D47 /* Characters */,
@@ -222,9 +272,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1DE5CD52B337B0500226D47 /* Character.swift in Sources */,
+				F19438C32B34B53C00E2F052 /* CharactersEndpoint.swift in Sources */,
 				F1A5E4332B31E6EA003C13DE /* Coordinator.swift in Sources */,
+				F19438C02B34B1AB00E2F052 /* HTTPClient.swift in Sources */,
 				F1A5E41F2B31E5BA003C13DE /* HomeViewController.swift in Sources */,
+				F19438BC2B34B0C200E2F052 /* RequestError.swift in Sources */,
+				F19438BE2B34B18F00E2F052 /* RequestMethod.swift in Sources */,
+				F19438C62B34B64000E2F052 /* CharactersService.swift in Sources */,
 				F1A1C2AA2B33397000FF22ED /* HomeCategoryView.swift in Sources */,
+				F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */,
 				F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */,
 				F1A5E4352B31E739003C13DE /* HomeCoordinator.swift in Sources */,
 				F1A5E41B2B31E5BA003C13DE /* AppDelegate.swift in Sources */,
@@ -298,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -355,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -381,7 +437,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +470,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

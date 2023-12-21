@@ -16,7 +16,7 @@ class HomeCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = HomeViewController()
+        let vc = HomeViewController(service: CharactersService())
         self.navController.pushViewController(vc, animated: true)
     }
     

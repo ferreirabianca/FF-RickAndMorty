@@ -8,11 +8,15 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    var service: CharactersServiceable?
+    
     //MARK: - LazyVars
     lazy var charactersView: HomeCategoryView = {
         let view = HomeCategoryView()
         view.setupView(title: "Personagens", imageName: "characters-home-icon")
         view.backgroundColor = .blue.withAlphaComponent(0.3)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(getCharacter))
+        view.addGestureRecognizer(gesture)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -34,12 +38,44 @@ class HomeViewController: UIViewController {
     }()
     
     //MARK: - LifeCycle
+    init(service: CharactersServiceable) {
+        super.init(nibName: nil, bundle: nil)
+        self.service = service
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setupViews()
-        getCharacters()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    func getCharacters(completion: @escaping (Result<Character, RequestError>) -> Void) {
+        Task(priority: .background) {
+            let result = await service?.getCaracter(id: 2)
+            switch result {
+            case .success(let success):
+                print(success.name)
+            case .failure(let failure):
+                print(failure)
+            case .none:
+                break;
+            }
+        }
+    }
+    
+    @objc func getCharacter(_ sender: Any) {
+        getCharacters { result in
+            print(result)
+        }
     }
     
     //MARK: - Private Functions
@@ -68,23 +104,5 @@ class HomeViewController: UIViewController {
             episodesView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             episodesView.heightAnchor.constraint(equalToConstant: 100),
         ])
-    }
-    
-    func getCharacters() {
-        let urlString = "https://rickandmortyapi.com/api/character/2"
-        NetworkManager.shared.fetchData(from: urlString) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let decoder = JSONDecoder()
-                    let character = try decoder.decode(Character.self, from: data)
-                    print("\(character)")
-                } catch {
-                    print("")
-                }
-            case .failure(let failure):
-                print()
-            }
-        }
     }
 }
