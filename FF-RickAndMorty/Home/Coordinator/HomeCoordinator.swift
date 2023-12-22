@@ -37,4 +37,10 @@ class HomeCoordinator: Coordinator {
         childCoordinator.append(coordinator)
         coordinator.start()
     }
+    
+    func showEpisodes() {
+        let coordinator = EpisodesCoordinator(childCoordinator: self.childCoordinator, navController: self.navController)
+        childCoordinator.append(coordinator)
+        coordinator.start()
+    }
 }

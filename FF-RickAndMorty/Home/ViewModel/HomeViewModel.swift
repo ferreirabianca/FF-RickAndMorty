@@ -17,4 +17,8 @@ class HomeViewModel {
     func gotoLocations() {
         coordinator?.showLocations()
     }
+    
+    func gotoEpisodes() {
+        coordinator?.showEpisodes()
+    }
 }

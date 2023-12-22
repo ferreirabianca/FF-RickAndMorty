@@ -57,6 +57,10 @@ class HomeViewController: UIViewController {
         viewModel?.gotoLocations()
     }
     
+    @objc func didTapEpisodes(_ sender: Any) {
+        viewModel?.gotoEpisodes()
+    }
+    
     //MARK: - Private Functions
     private func setupViews() {
         view.addSubview(charactersView)
@@ -89,8 +93,10 @@ class HomeViewController: UIViewController {
     private func setupTapGestures() {
         let charactersTap = UITapGestureRecognizer(target: self, action: #selector(didTapCharacters))
         let locationsTap = UITapGestureRecognizer(target: self, action: #selector(didTapLocations))
+        let episodesTap = UITapGestureRecognizer(target: self, action: #selector(didTapEpisodes))
         
         charactersView.addGestureRecognizer(charactersTap)
         locationsView.addGestureRecognizer(locationsTap)
+        episodesView.addGestureRecognizer(episodesTap)
     }
 }

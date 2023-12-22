@@ -1,5 +1,5 @@
 //
-//  LocationsEndpoint.swift
+//  EpisodesEndpoint.swift
 //  FF-RickAndMorty
 //
 //  Created by Bianca Ferreira on 22/12/23.
@@ -7,19 +7,18 @@
 
 import Foundation
 
-enum LocationsEndpoint {
-    case locations
-    case location(id: Int)
+enum EpisodesEndpoint {
+    case episodes
+    case episode(id: Int)
 }
 
-extension LocationsEndpoint: Endpoint {
+extension EpisodesEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .locations:
-            return "/location"
-            
-        case .location(let id):
-            return "/location/\(id)"
+        case .episodes:
+            return "/episode"
+        case .episode(let id):
+            return "/episodes/\(id)"
         }
     }
     
@@ -34,6 +33,4 @@ extension LocationsEndpoint: Endpoint {
     var body: [String : String]? {
         return nil
     }
-    
-    
 }

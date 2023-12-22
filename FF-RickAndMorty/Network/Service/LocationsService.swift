@@ -13,7 +13,7 @@ protocol LocationsServiceable {
 
 struct LocationsService: HTTPClient, LocationsServiceable {
     func getLocations() async -> Result<Locations, RequestError> {
-        let endpoint = LocationsEndpoint.location
+        let endpoint = LocationsEndpoint.locations
         return await sendRequest(endpoint: endpoint, responseModel: Locations.self)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LocationsCell.swift
+//  EpisodesCell.swift
 //  FF-RickAndMorty
 //
 //  Created by Bianca Ferreira on 22/12/23.
@@ -8,13 +8,13 @@
 import UIKit
 import SkeletonView
 
-struct LocationsCellData {
+struct EpisodesCellData {
     var name: String
 }
 
-class LocationsCell: UITableViewCell {
+class EpisodesCell: UITableViewCell {
     //MARK: - Views
-    lazy var locationName: UILabel = {
+    lazy var episodeName: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
@@ -47,23 +47,24 @@ class LocationsCell: UITableViewCell {
     }
     
     //MARK: - Functions
-    func setupCell(data: LocationsCellData) {
-        locationName.text = data.name
+    func setupCell(data: EpisodesCellData) {
+        episodeName.text = data.name
     }
     
     //MARK: - Private Functions
     private func setupViews() {
-        contentView.addSubview(locationName)
+        contentView.addSubview(episodeName)
         
         setupConstraints()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            locationName.topAnchor.constraint(equalTo: contentView.topAnchor),
-            locationName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            locationName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            locationName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            episodeName.topAnchor.constraint(equalTo: contentView.topAnchor),
+            episodeName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            episodeName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            episodeName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
     }
 }
+

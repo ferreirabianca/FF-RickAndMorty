@@ -16,3 +16,14 @@ struct CharactersService: HTTPClient, CharactersServiceable {
         return await sendRequest(endpoint: CharactersEndpoint.characters, responseModel: Characters.self)
     }
 }
+
+protocol CharacterServiceable {
+    func getCaracter(id: Int) async -> Result<Character, RequestError>
+}
+
+struct CharacterService: HTTPClient, CharacterServiceable {
+    func getCaracter(id: Int) async -> Result<Character, RequestError> {
+        let endpoint = CharactersEndpoint.character(id: id)
+        return await sendRequest(endpoint: endpoint, responseModel: Character.self)
+    }
+}

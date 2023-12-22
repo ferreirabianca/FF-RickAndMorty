@@ -12,9 +12,12 @@ struct Locations: Codable {
     let results: [Location]
 }
 
-struct Info: Codable {
-    let count: Int
-    let pages: Int
-    let next: String?
-    let prev: String?
+struct Location: Codable {
+    let id: Int
+    let name: String
+    let type: String
+    let dimension: String
+    let residents: [String]
+    let url: String
+    let created: String
 }
