@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1037B332B34E62000321903 /* CharactersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1037B322B34E62000321903 /* CharactersCell.swift */; };
+		F1037B362B34E95500321903 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1037B352B34E95500321903 /* UIImageView+Extensions.swift */; };
+		F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F19378252B35B5D10069DAEF /* SkeletonView */; };
+		F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */; };
 		F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438B92B34AFE200E2F052 /* Endpoint.swift */; };
 		F19438BC2B34B0C200E2F052 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438BB2B34B0C200E2F052 /* RequestError.swift */; };
 		F19438BE2B34B18F00E2F052 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438BD2B34B18F00E2F052 /* RequestMethod.swift */; };
@@ -31,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F1037B322B34E62000321903 /* CharactersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCell.swift; sourceTree = "<group>"; };
+		F1037B352B34E95500321903 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Characters+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		F19438B92B34AFE200E2F052 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		F19438BB2B34B0C200E2F052 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		F19438BD2B34B18F00E2F052 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
@@ -61,12 +68,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1037B312B34E60500321903 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F1037B322B34E62000321903 /* CharactersCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		F1037B342B34E93E00321903 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F1037B352B34E95500321903 /* UIImageView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F19378272B35BE400069DAEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F19438B52B347D8600E2F052 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +188,7 @@
 		F1A5E4192B31E5BA003C13DE /* FF-RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				F1037B342B34E93E00321903 /* Extensions */,
 				F1A5E4282B31E5BC003C13DE /* Info.plist */,
 				F1DE5CE12B338A5F00226D47 /* Characters */,
 				F1A5E4312B31E6E2003C13DE /* Coordinator */,
@@ -225,6 +258,8 @@
 		F1DE5CE12B338A5F00226D47 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				F19378272B35BE400069DAEF /* Extensions */,
+				F1037B312B34E60500321903 /* Subviews */,
 				F19438CA2B34C7C900E2F052 /* Coordinator */,
 				F19438C92B34C7C200E2F052 /* View */,
 				F1DE5CE62B338DEE00226D47 /* ViewModel */,
@@ -256,6 +291,9 @@
 			dependencies = (
 			);
 			name = "FF-RickAndMorty";
+			packageProductDependencies = (
+				F19378252B35B5D10069DAEF /* SkeletonView */,
+			);
 			productName = "FF-RickAndMorty";
 			productReference = F1A5E4172B31E5BA003C13DE /* FF-RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +322,9 @@
 				Base,
 			);
 			mainGroup = F1A5E40E2B31E5BA003C13DE;
+			packageReferences = (
+				F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
 			productRefGroup = F1A5E4182B31E5BA003C13DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,6 +354,8 @@
 				F19438CF2B34D16B00E2F052 /* HomeViewModel.swift in Sources */,
 				F1DE5CD52B337B0500226D47 /* Character.swift in Sources */,
 				F19438C32B34B53C00E2F052 /* CharactersEndpoint.swift in Sources */,
+				F1037B362B34E95500321903 /* UIImageView+Extensions.swift in Sources */,
+				F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */,
 				F1A5E4332B31E6EA003C13DE /* Coordinator.swift in Sources */,
 				F19438C02B34B1AB00E2F052 /* HTTPClient.swift in Sources */,
 				F1A5E41F2B31E5BA003C13DE /* HomeViewController.swift in Sources */,
@@ -329,6 +372,7 @@
 				F19438D32B34D6CA00E2F052 /* CharactersService.swift in Sources */,
 				F1A5E41B2B31E5BA003C13DE /* AppDelegate.swift in Sources */,
 				F1A5E41D2B31E5BA003C13DE /* SceneDelegate.swift in Sources */,
+				F1037B332B34E62000321903 /* CharactersCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +597,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.30.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F19378252B35B5D10069DAEF /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1A5E40F2B31E5BA003C13DE /* Project object */;
 }

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SkeletonView
 
-class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CharactersViewController: UIViewController {
     //MARK: - Properties
     var viewModel: CharactersViewModel?
     
@@ -19,6 +20,9 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
+        table.estimatedRowHeight = 100
+        table.rowHeight = 100
+        table.separatorStyle = .none
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -28,6 +32,20 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         setupViews()
         loadTableView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.tableView.reloadData()
+            self.tableView.stopSkeletonAnimation()
+            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.isSkeletonable = true
+        self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .clouds),
+                                                    animation: nil,
+                                                    transition: .crossDissolve(0.25))
     }
     
     //MARK: - Private Functions
@@ -37,10 +55,6 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
             switch result {
             case .success(let response):
                 self.characters = response.results
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
                 completion?()
                 
             case .failure(let failure):
@@ -55,8 +69,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         view.backgroundColor = .blue
         navigationItem.title = "Personagens"
         
+        setupCells()
         setupConstraints()
-        
     }
     
     private func setupConstraints() {
@@ -68,12 +82,7 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         ])
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+    private func setupCells() {
+        self.tableView.register(CharactersCell.self, forCellReuseIdentifier: "cell")
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
 }
