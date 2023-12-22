@@ -8,11 +8,11 @@
 import Foundation
 
 struct Characters: Codable {
-    let info: Info
+    let info: CharacterInfo
     let results: [Character]
 }
 
-struct Info: Codable {
+struct CharacterInfo: Codable {
     let count: Int
     let pages: Int
     let next: String?

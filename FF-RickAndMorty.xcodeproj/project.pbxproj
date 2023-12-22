@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		F1037B332B34E62000321903 /* CharactersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1037B322B34E62000321903 /* CharactersCell.swift */; };
 		F1037B362B34E95500321903 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1037B352B34E95500321903 /* UIImageView+Extensions.swift */; };
+		F15D45CF2B3608510036066F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45CE2B3608510036066F /* Location.swift */; };
+		F15D45D12B36089E0036066F /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45D02B36089E0036066F /* Locations.swift */; };
+		F15D45D32B36090C0036066F /* LocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45D22B36090C0036066F /* LocationsService.swift */; };
+		F15D45D52B3609B80036066F /* LocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45D42B3609B80036066F /* LocationsEndpoint.swift */; };
+		F15D45DB2B360A740036066F /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45DA2B360A740036066F /* LocationsCoordinator.swift */; };
+		F15D45DD2B360AA80036066F /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45DC2B360AA80036066F /* LocationsViewController.swift */; };
+		F15D45DF2B360AEC0036066F /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45DE2B360AEC0036066F /* LocationsViewModel.swift */; };
+		F15D45E22B360C600036066F /* Locations+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45E12B360C600036066F /* Locations+TableViewDelegate.swift */; };
+		F15D45E52B360CB00036066F /* LocationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45E42B360CB00036066F /* LocationsCell.swift */; };
 		F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F19378252B35B5D10069DAEF /* SkeletonView */; };
 		F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */; };
 		F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438B92B34AFE200E2F052 /* Endpoint.swift */; };
@@ -37,6 +46,15 @@
 /* Begin PBXFileReference section */
 		F1037B322B34E62000321903 /* CharactersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCell.swift; sourceTree = "<group>"; };
 		F1037B352B34E95500321903 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		F15D45CE2B3608510036066F /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F15D45D02B36089E0036066F /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		F15D45D22B36090C0036066F /* LocationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsService.swift; sourceTree = "<group>"; };
+		F15D45D42B3609B80036066F /* LocationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsEndpoint.swift; sourceTree = "<group>"; };
+		F15D45DA2B360A740036066F /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
+		F15D45DC2B360AA80036066F /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		F15D45DE2B360AEC0036066F /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		F15D45E12B360C600036066F /* Locations+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locations+TableViewDelegate.swift"; sourceTree = "<group>"; };
+		F15D45E42B360CB00036066F /* LocationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCell.swift; sourceTree = "<group>"; };
 		F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Characters+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		F19438B92B34AFE200E2F052 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		F19438BB2B34B0C200E2F052 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -91,6 +109,58 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F15D45D62B360A510036066F /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				F15D45E32B360C990036066F /* Subviews */,
+				F15D45E02B360C540036066F /* Extensions */,
+				F15D45D92B360A5E0036066F /* Coordinator */,
+				F15D45D82B360A580036066F /* ViewModel */,
+				F15D45D72B360A540036066F /* View */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		F15D45D72B360A540036066F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F15D45DC2B360AA80036066F /* LocationsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F15D45D82B360A580036066F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F15D45DE2B360AEC0036066F /* LocationsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F15D45D92B360A5E0036066F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F15D45DA2B360A740036066F /* LocationsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F15D45E02B360C540036066F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F15D45E12B360C600036066F /* Locations+TableViewDelegate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F15D45E32B360C990036066F /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F15D45E42B360CB00036066F /* LocationsCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		F19378272B35BE400069DAEF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				F19438C22B34B53C00E2F052 /* CharactersEndpoint.swift */,
+				F15D45D42B3609B80036066F /* LocationsEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -133,6 +204,7 @@
 			children = (
 				F19438C52B34B64000E2F052 /* CharacterService.swift */,
 				F19438D22B34D6CA00E2F052 /* CharactersService.swift */,
+				F15D45D22B36090C0036066F /* LocationsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -193,6 +265,7 @@
 				F1A5E4312B31E6E2003C13DE /* Coordinator */,
 				F1037B342B34E93E00321903 /* Extensions */,
 				F1A5E42E2B31E6D3003C13DE /* Home */,
+				F15D45D62B360A510036066F /* Locations */,
 				F1DE5CD32B337AFC00226D47 /* Models */,
 				F19438B52B347D8600E2F052 /* Network */,
 				F1A5E4302B31E6DB003C13DE /* Resources */,
@@ -251,6 +324,8 @@
 			children = (
 				F1DE5CD42B337B0500226D47 /* Character.swift */,
 				F19438D02B34D4E300E2F052 /* Characters.swift */,
+				F15D45CE2B3608510036066F /* Location.swift */,
+				F15D45D02B36089E0036066F /* Locations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,16 +432,25 @@
 				F1037B362B34E95500321903 /* UIImageView+Extensions.swift in Sources */,
 				F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */,
 				F1A5E4332B31E6EA003C13DE /* Coordinator.swift in Sources */,
+				F15D45E52B360CB00036066F /* LocationsCell.swift in Sources */,
+				F15D45DB2B360A740036066F /* LocationsCoordinator.swift in Sources */,
+				F15D45E22B360C600036066F /* Locations+TableViewDelegate.swift in Sources */,
+				F15D45DD2B360AA80036066F /* LocationsViewController.swift in Sources */,
+				F15D45D12B36089E0036066F /* Locations.swift in Sources */,
 				F19438C02B34B1AB00E2F052 /* HTTPClient.swift in Sources */,
 				F1A5E41F2B31E5BA003C13DE /* HomeViewController.swift in Sources */,
 				F19438BC2B34B0C200E2F052 /* RequestError.swift in Sources */,
+				F15D45DF2B360AEC0036066F /* LocationsViewModel.swift in Sources */,
 				F19438BE2B34B18F00E2F052 /* RequestMethod.swift in Sources */,
 				F19438C62B34B64000E2F052 /* CharacterService.swift in Sources */,
 				F19438C82B34C72500E2F052 /* CharactersViewController.swift in Sources */,
 				F1A1C2AA2B33397000FF22ED /* HomeCategoryView.swift in Sources */,
 				F19438CC2B34C7D400E2F052 /* CharactersCoordinator.swift in Sources */,
+				F15D45D32B36090C0036066F /* LocationsService.swift in Sources */,
+				F15D45CF2B3608510036066F /* Location.swift in Sources */,
 				F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */,
 				F19438D12B34D4E300E2F052 /* Characters.swift in Sources */,
+				F15D45D52B3609B80036066F /* LocationsEndpoint.swift in Sources */,
 				F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */,
 				F1A5E4352B31E739003C13DE /* HomeCoordinator.swift in Sources */,
 				F19438D32B34D6CA00E2F052 /* CharactersService.swift in Sources */,

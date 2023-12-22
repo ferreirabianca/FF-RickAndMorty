@@ -53,6 +53,10 @@ class HomeViewController: UIViewController {
         viewModel?.gotoCharacters()
     }
     
+    @objc func didTapLocations(_ sender: Any) {
+        viewModel?.gotoLocations()
+    }
+    
     //MARK: - Private Functions
     private func setupViews() {
         view.addSubview(charactersView)
@@ -84,6 +88,9 @@ class HomeViewController: UIViewController {
     
     private func setupTapGestures() {
         let charactersTap = UITapGestureRecognizer(target: self, action: #selector(didTapCharacters))
+        let locationsTap = UITapGestureRecognizer(target: self, action: #selector(didTapLocations))
+        
         charactersView.addGestureRecognizer(charactersTap)
+        locationsView.addGestureRecognizer(locationsTap)
     }
 }
