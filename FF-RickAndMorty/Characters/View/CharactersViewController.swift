@@ -20,8 +20,8 @@ class CharactersViewController: UIViewController {
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
-        table.estimatedRowHeight = 100
-        table.rowHeight = 100
+        table.estimatedRowHeight = 200
+        table.rowHeight = 200
         table.separatorStyle = .none
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -43,9 +43,8 @@ class CharactersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.isSkeletonable = true
-        self.tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .clouds),
-                                                    animation: nil,
-                                                    transition: .crossDissolve(0.25))
+        self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
+                                            transition: .crossDissolve(0.25))
     }
     
     //MARK: - Private Functions

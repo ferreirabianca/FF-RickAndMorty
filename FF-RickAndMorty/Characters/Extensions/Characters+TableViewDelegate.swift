@@ -22,15 +22,12 @@ extension CharactersViewController: UITableViewDelegate, SkeletonTableViewDataSo
         else {
             return UITableViewCell()
         }
-        let data = CharactersCellData(name: characters[indexPath.row].name, image: characters[indexPath.row].image)
+        let data = CharactersCellData(name: characters[indexPath.row].name,
+                                      image: characters[indexPath.row].image)
         cell.setupCell(data: data)
         
         cell.selectionStyle = .none
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
 }

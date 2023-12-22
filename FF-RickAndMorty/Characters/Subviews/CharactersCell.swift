@@ -19,12 +19,17 @@ class CharactersCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.isSkeletonable = true
+        imageView.layer.cornerRadius = 15
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     lazy var characterName: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
         label.isSkeletonable = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -79,8 +84,7 @@ class CharactersCell: UITableViewCell {
             
             characterName.leadingAnchor.constraint(equalTo: contentView.centerXAnchor),
             characterName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            characterName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            characterName.topAnchor.constraint(equalTo: contentView.topAnchor),
+            characterName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
 }
