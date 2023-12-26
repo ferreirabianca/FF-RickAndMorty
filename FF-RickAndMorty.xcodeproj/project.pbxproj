@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		F1037B332B34E62000321903 /* CharactersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1037B322B34E62000321903 /* CharactersCell.swift */; };
 		F1037B362B34E95500321903 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1037B352B34E95500321903 /* UIImageView+Extensions.swift */; };
+		F14550502B3B01CE00C0A792 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F145504F2B3B01CE00C0A792 /* CharacterDetailsViewController.swift */; };
+		F14550542B3B01F400C0A792 /* CharacterDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14550532B3B01F400C0A792 /* CharacterDetailsCoordinator.swift */; };
+		F14550562B3B022E00C0A792 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14550552B3B022E00C0A792 /* CharacterDetailsViewModel.swift */; };
 		F15D45D12B36089E0036066F /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45D02B36089E0036066F /* Locations.swift */; };
 		F15D45D32B36090C0036066F /* LocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45D22B36090C0036066F /* LocationsService.swift */; };
 		F15D45D52B3609B80036066F /* LocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D45D42B3609B80036066F /* LocationsEndpoint.swift */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		F1037B322B34E62000321903 /* CharactersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCell.swift; sourceTree = "<group>"; };
 		F1037B352B34E95500321903 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		F145504F2B3B01CE00C0A792 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
+		F14550532B3B01F400C0A792 /* CharacterDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsCoordinator.swift; sourceTree = "<group>"; };
+		F14550552B3B022E00C0A792 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		F15D45D02B36089E0036066F /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		F15D45D22B36090C0036066F /* LocationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsService.swift; sourceTree = "<group>"; };
 		F15D45D42B3609B80036066F /* LocationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsEndpoint.swift; sourceTree = "<group>"; };
@@ -119,6 +125,30 @@
 				F1037B352B34E95500321903 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F145504E2B3B01B800C0A792 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F145504F2B3B01CE00C0A792 /* CharacterDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F14550512B3B01DC00C0A792 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F14550532B3B01F400C0A792 /* CharacterDetailsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F14550522B3B01E000C0A792 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F14550552B3B022E00C0A792 /* CharacterDetailsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		F15D45D62B360A510036066F /* Locations */ = {
@@ -228,6 +258,9 @@
 		F15D45FF2B361CE50036066F /* CharacterDetails */ = {
 			isa = PBXGroup;
 			children = (
+				F14550522B3B01E000C0A792 /* ViewModel */,
+				F14550512B3B01DC00C0A792 /* Coordinator */,
+				F145504E2B3B01B800C0A792 /* View */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -332,8 +365,8 @@
 		F1A5E4192B31E5BA003C13DE /* FF-RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
-				F15D45FF2B361CE50036066F /* CharacterDetails */,
 				F1A5E4282B31E5BC003C13DE /* Info.plist */,
+				F15D45FF2B361CE50036066F /* CharacterDetails */,
 				F1DE5CE12B338A5F00226D47 /* Characters */,
 				F1A5E4312B31E6E2003C13DE /* Coordinator */,
 				F15D45E62B360F550036066F /* Episodes */,
@@ -504,6 +537,7 @@
 				F19438C32B34B53C00E2F052 /* CharactersEndpoint.swift in Sources */,
 				F15D45FB2B3611DA0036066F /* Info.swift in Sources */,
 				F1037B362B34E95500321903 /* UIImageView+Extensions.swift in Sources */,
+				F14550542B3B01F400C0A792 /* CharacterDetailsCoordinator.swift in Sources */,
 				F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */,
 				F15D45F92B36116E0036066F /* Episodes.swift in Sources */,
 				F1A5E4332B31E6EA003C13DE /* Coordinator.swift in Sources */,
@@ -527,10 +561,12 @@
 				F15D45D32B36090C0036066F /* LocationsService.swift in Sources */,
 				F15D45EE2B360F870036066F /* EpisodesViewModel.swift in Sources */,
 				F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */,
+				F14550502B3B01CE00C0A792 /* CharacterDetailsViewController.swift in Sources */,
 				F19438D12B34D4E300E2F052 /* Characters.swift in Sources */,
 				F15D45D52B3609B80036066F /* LocationsEndpoint.swift in Sources */,
 				F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */,
 				F1A5E4352B31E739003C13DE /* HomeCoordinator.swift in Sources */,
+				F14550562B3B022E00C0A792 /* CharacterDetailsViewModel.swift in Sources */,
 				F19438D32B34D6CA00E2F052 /* CharactersService.swift in Sources */,
 				F15D45F52B360FB50036066F /* Episodes+TableViewDelegate.swift in Sources */,
 				F15D45F72B3611210036066F /* EpisodesService.swift in Sources */,

@@ -29,4 +29,10 @@ class CharactersCoordinator: Coordinator {
     func finish() {
         
     }
+    
+    func showCharacterDetails(character: Character) {
+        let coordinator = CharacterDetailsCoordinator(childCoordinator: self.childCoordinator, navController: self.navController, character: character)
+        childCoordinator.append(coordinator)
+        coordinator.start()
+    }
 }

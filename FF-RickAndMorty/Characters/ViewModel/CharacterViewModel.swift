@@ -11,9 +11,22 @@ class CharactersViewModel {
     weak var coordinator: CharactersCoordinator?
     var service: CharactersServiceable?
     
+    func gotoCharacterDetails(character: Character) {
+        self.coordinator?.showCharacterDetails(character: character)
+    }
+    
     func getCaracters(completion: @escaping (Result<Characters, RequestError>) -> Void) {
         Task(priority: .background) {
             guard let result = await service?.getCharacters() else {
+                return
+            }
+            completion(result)
+        }
+    }
+    
+    func getCharacter(id: Int, completion: @escaping ((Result<Character, RequestError>) -> Void)) {
+        Task(priority: .background) {
+            guard let result = await self.service?.getCaracter(id: id) else {
                 return
             }
             completion(result)
