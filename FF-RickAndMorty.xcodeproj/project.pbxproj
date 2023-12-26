@@ -225,6 +225,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F15D45FF2B361CE50036066F /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CharacterDetails;
+			sourceTree = "<group>";
+		};
 		F19378272B35BE400069DAEF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +332,7 @@
 		F1A5E4192B31E5BA003C13DE /* FF-RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				F15D45FF2B361CE50036066F /* CharacterDetails */,
 				F1A5E4282B31E5BC003C13DE /* Info.plist */,
 				F1DE5CE12B338A5F00226D47 /* Characters */,
 				F1A5E4312B31E6E2003C13DE /* Coordinator */,
