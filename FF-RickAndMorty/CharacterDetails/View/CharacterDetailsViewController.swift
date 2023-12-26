@@ -8,8 +8,11 @@
 import UIKit
 
 class CharacterDetailsViewController: UIViewController {
+    //MARK: - Private Properties
+    private var defaultSpacing: CGFloat = 20
+    
     //MARK: - Views
-    lazy var characterImage: UIImageView = {
+    lazy var imageIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.isSkeletonable = true
@@ -19,7 +22,57 @@ class CharacterDetailsViewController: UIViewController {
         return imageView
     }()
     
-    lazy var characterName: UILabel = {
+    lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isSkeletonable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var statusLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isSkeletonable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var typeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isSkeletonable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var genderLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isSkeletonable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var originLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isSkeletonable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var currentLocationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
@@ -46,28 +99,61 @@ class CharacterDetailsViewController: UIViewController {
     
     //MARK: - Private Functions
     private func setupViews() {
-        view.addSubview(characterImage)
-        view.addSubview(characterName)
+        view.addSubview(imageIcon)
+        view.addSubview(nameLabel)
+        view.addSubview(statusLabel)
+        view.addSubview(typeLabel)
+        view.addSubview(originLabel)
+        view.addSubview(genderLabel)
+        view.addSubview(currentLocationLabel)
         
-        characterName.text = character?.name
-        
-        guard let imageURL = URL(string: character!.image) else {
-            return
-        }
-        characterImage.loadFrom(url: imageURL)
-        
+        //TODO: validate character if is not nil and show empty state if necessary
+        nameLabel.text = character?.name
+        statusLabel.text = "\(character?.status ?? "") - \(character?.species ?? "")"
+        typeLabel.isHidden = (character?.type?.isEmpty)!
+        typeLabel.text = "Tipo: \(character?.type ?? "")"
+        genderLabel.text = "Genero: \(character?.gender ?? "")"
+        originLabel.text = "Localização de Origin: \(character?.origin.name ?? "")"
+        currentLocationLabel.text = "Localização atual: \(character?.location.name ?? "")"
+        setupImage(for: character?.image)
         setupConstraints()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            characterImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            characterImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            characterImage.widthAnchor.constraint(equalToConstant: 50),
-            characterImage.heightAnchor.constraint(equalToConstant: 50),
+            imageIcon.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: defaultSpacing),
+            imageIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: defaultSpacing),
+            imageIcon.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -defaultSpacing),
             
-            characterName.topAnchor.constraint(equalTo: characterImage.topAnchor, constant: 20),
+            nameLabel.topAnchor.constraint(equalTo: imageIcon.bottomAnchor, constant: defaultSpacing),
+            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: defaultSpacing),
+            statusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            typeLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: defaultSpacing),
+            typeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            genderLabel.topAnchor.constraint(equalTo: typeLabel.isHidden ? statusLabel.bottomAnchor : typeLabel.bottomAnchor, constant: defaultSpacing),
+            genderLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            originLabel.topAnchor.constraint(equalTo: genderLabel.bottomAnchor, constant: defaultSpacing),
+            originLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: defaultSpacing),
+            originLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -defaultSpacing),
+            originLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            currentLocationLabel.topAnchor.constraint(equalTo: originLabel.bottomAnchor, constant: defaultSpacing),
+            currentLocationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: defaultSpacing),
+            currentLocationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -defaultSpacing),
+            currentLocationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
         ])
+    }
+    
+    private func setupImage(for image: String?) {
+        guard let image, let imageURL = URL(string: image) else {
+            return
+        }
+        imageIcon.loadFrom(url: imageURL)
     }
 }
