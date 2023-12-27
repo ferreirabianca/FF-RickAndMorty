@@ -27,4 +27,10 @@ class EpisodesCoordinator: Coordinator {
     }
     
     func finish() {}
+    
+    func gotoEpisodeDetails(episode: Episode) {
+        let coordinator = EpisodeDetailsCoordinator(childCoordinator: self.childCoordinator, navController: self.navController, episode: episode)
+        childCoordinator.append(coordinator)
+        coordinator.start()
+    }
 }

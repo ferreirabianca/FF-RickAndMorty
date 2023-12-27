@@ -31,12 +31,6 @@ class EpisodesViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         loadTableView()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            self.tableView.reloadData()
-            self.tableView.stopSkeletonAnimation()
-            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +38,11 @@ class EpisodesViewController: UIViewController {
         self.tableView.isSkeletonable = true
         self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
                                             transition: .crossDissolve(0.25))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.tableView.reloadData()
+            self.tableView.stopSkeletonAnimation()
+            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+        })
     }
     
     //MARK: - Private Functions

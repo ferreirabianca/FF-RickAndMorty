@@ -29,4 +29,17 @@ extension EpisodesViewController: UITableViewDelegate, SkeletonTableViewDataSour
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.getEpisode(id: episodes[indexPath.row].id, completion: { result in
+            switch result {
+            case .success(let episode):
+                DispatchQueue.main.async {
+                    self.viewModel?.gotoEpisodeDetails(with: episode)
+                }
+            case .failure(let failure):
+                print("\(failure)")
+            }
+        })
+    }
 }

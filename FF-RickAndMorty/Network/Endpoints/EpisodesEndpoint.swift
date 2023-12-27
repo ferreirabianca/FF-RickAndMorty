@@ -18,7 +18,7 @@ extension EpisodesEndpoint: Endpoint {
         case .episodes:
             return "/episode"
         case .episode(let id):
-            return "/episodes/\(id)"
+            return "/episode/\(id)"
         }
     }
     
