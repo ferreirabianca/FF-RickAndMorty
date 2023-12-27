@@ -27,4 +27,10 @@ class LocationsCoordinator: Coordinator {
     }
     
     func finish() {}
+    
+    func showLocationDetails(location: Location) {
+        let coordinator = LocationDetailsCoordinator(childCoordinator: self.childCoordinator, navController: self.navController, location: location)
+        childCoordinator.append(coordinator)
+        coordinator.start()
+    }
 }

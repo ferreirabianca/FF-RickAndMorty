@@ -8,6 +8,10 @@
 import UIKit
 
 class CharacterDetailsViewController: UIViewController {
+    //MARK: - Properties
+    var viewModel: CharacterDetailsViewModel?
+    var character: Character?
+    
     //MARK: - Private Properties
     private var defaultSpacing: CGFloat = 20
     
@@ -81,10 +85,6 @@ class CharacterDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    //MARK: - Properties
-    var viewModel: CharacterDetailsViewModel?
-    var character: Character?
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
