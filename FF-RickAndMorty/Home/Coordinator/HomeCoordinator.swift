@@ -8,12 +8,14 @@
 import UIKit
 
 class HomeCoordinator: Coordinator {
-    var childCoordinator = [Coordinator]()
+    var childCoordinator: [Coordinator]
     var navController: UINavigationController
     var viewModel = HomeViewModel()
     
-    init(navController: UINavigationController) {
+    init(childCoordinator: [Coordinator], navController: UINavigationController, viewModel: HomeViewModel = HomeViewModel()) {
+        self.childCoordinator = childCoordinator
         self.navController = navController
+        self.viewModel = viewModel
     }
     
     func start() {

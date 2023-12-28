@@ -35,6 +35,7 @@
 		F16AC4C92B3B9DE900B6E37B /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AC4C82B3B9DE900B6E37B /* LocationDetailsViewController.swift */; };
 		F16AC4CB2B3B9E2B00B6E37B /* LocationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AC4CA2B3B9E2B00B6E37B /* LocationDetailsViewModel.swift */; };
 		F16AC4CD2B3B9E3D00B6E37B /* LocationDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AC4CC2B3B9E3D00B6E37B /* LocationDetailsCoordinator.swift */; };
+		F18374332B3C57E400B3FCBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18374322B3C57E400B3FCBD /* LoginViewController.swift */; };
 		F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F19378252B35B5D10069DAEF /* SkeletonView */; };
 		F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */; };
 		F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19438B92B34AFE200E2F052 /* Endpoint.swift */; };
@@ -55,6 +56,11 @@
 		F1A5E4272B31E5BC003C13DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A5E4252B31E5BC003C13DE /* LaunchScreen.storyboard */; };
 		F1A5E4332B31E6EA003C13DE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5E4322B31E6EA003C13DE /* Coordinator.swift */; };
 		F1A5E4352B31E739003C13DE /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5E4342B31E739003C13DE /* HomeCoordinator.swift */; };
+		F1DAE9552B3DE7B000639956 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE9542B3DE7B000639956 /* LoginViewModel.swift */; };
+		F1DAE9572B3DE7C600639956 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE9562B3DE7C600639956 /* LoginCoordinator.swift */; };
+		F1DAE95A2B3DEF7F00639956 /* Login+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE9592B3DEF7F00639956 /* Login+TextFieldDelegate.swift */; };
+		F1DAE95D2B3DF1CA00639956 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE95C2B3DF1CA00639956 /* DefaultTextField.swift */; };
+		F1DAE9602B3DF2A800639956 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE95F2B3DF2A800639956 /* Layout.swift */; };
 		F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DE5CE72B338DF800226D47 /* CharacterViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +93,7 @@
 		F16AC4C82B3B9DE900B6E37B /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		F16AC4CA2B3B9E2B00B6E37B /* LocationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModel.swift; sourceTree = "<group>"; };
 		F16AC4CC2B3B9E3D00B6E37B /* LocationDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsCoordinator.swift; sourceTree = "<group>"; };
+		F18374322B3C57E400B3FCBD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Characters+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		F19438B92B34AFE200E2F052 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		F19438BB2B34B0C200E2F052 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -108,6 +115,11 @@
 		F1A5E4282B31E5BC003C13DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1A5E4322B31E6EA003C13DE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F1A5E4342B31E739003C13DE /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		F1DAE9542B3DE7B000639956 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F1DAE9562B3DE7C600639956 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		F1DAE9592B3DEF7F00639956 /* Login+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+TextFieldDelegate.swift"; sourceTree = "<group>"; };
+		F1DAE95C2B3DF1CA00639956 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		F1DAE95F2B3DF2A800639956 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		F1DE5CE72B338DF800226D47 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -345,6 +357,41 @@
 			path = LocationDetails;
 			sourceTree = "<group>";
 		};
+		F183742E2B3C57C600B3FCBD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F1DAE9582B3DEF6C00639956 /* Extensions */,
+				F18374312B3C57DA00B3FCBD /* Coordinator */,
+				F18374302B3C57D500B3FCBD /* ViewModel */,
+				F183742F2B3C57CE00B3FCBD /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F183742F2B3C57CE00B3FCBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F18374322B3C57E400B3FCBD /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F18374302B3C57D500B3FCBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F1DAE9542B3DE7B000639956 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F18374312B3C57DA00B3FCBD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F1DAE9562B3DE7C600639956 /* LoginCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		F19378272B35BE400069DAEF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +502,7 @@
 				F1A5E42E2B31E6D3003C13DE /* Home */,
 				F1806E482B3B9C4A009B89EC /* LocationDetails */,
 				F15D45D62B360A510036066F /* Locations */,
+				F183742E2B3C57C600B3FCBD /* Login */,
 				F1DE5CD32B337AFC00226D47 /* Models */,
 				F19438B52B347D8600E2F052 /* Network */,
 				F1A5E4302B31E6DB003C13DE /* Resources */,
@@ -484,6 +532,8 @@
 		F1A5E4302B31E6DB003C13DE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1DAE95E2B3DF2A000639956 /* Utils */,
+				F1DAE95B2B3DF1A400639956 /* CustomViews */,
 				F1A5E41A2B31E5BA003C13DE /* AppDelegate.swift */,
 				F1A5E41C2B31E5BA003C13DE /* SceneDelegate.swift */,
 				F1A5E4232B31E5BC003C13DE /* Assets.xcassets */,
@@ -506,6 +556,30 @@
 				F1A5E41E2B31E5BA003C13DE /* HomeViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F1DAE9582B3DEF6C00639956 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F1DAE9592B3DEF7F00639956 /* Login+TextFieldDelegate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F1DAE95B2B3DF1A400639956 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F1DAE95C2B3DF1CA00639956 /* DefaultTextField.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		F1DAE95E2B3DF2A000639956 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F1DAE95F2B3DF2A800639956 /* Layout.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F1DE5CD32B337AFC00226D47 /* Models */ = {
@@ -622,6 +696,7 @@
 				F14550542B3B01F400C0A792 /* CharacterDetailsCoordinator.swift in Sources */,
 				F11C552C2B3BBD0100128E6D /* EpisodeDetailsCoordinator.swift in Sources */,
 				F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */,
+				F1DAE9602B3DF2A800639956 /* Layout.swift in Sources */,
 				F15D45F92B36116E0036066F /* Episodes.swift in Sources */,
 				F1A5E4332B31E6EA003C13DE /* Coordinator.swift in Sources */,
 				F15D45E52B360CB00036066F /* LocationsCell.swift in Sources */,
@@ -635,8 +710,10 @@
 				F15D45F22B360F9D0036066F /* EpisodesCell.swift in Sources */,
 				F1A5E41F2B31E5BA003C13DE /* HomeViewController.swift in Sources */,
 				F11C55302B3BBD1B00128E6D /* EpisodeDetailsViewModel.swift in Sources */,
+				F1DAE9552B3DE7B000639956 /* LoginViewModel.swift in Sources */,
 				F19438BC2B34B0C200E2F052 /* RequestError.swift in Sources */,
 				F15D45DF2B360AEC0036066F /* LocationsViewModel.swift in Sources */,
+				F1DAE9572B3DE7C600639956 /* LoginCoordinator.swift in Sources */,
 				F19438BE2B34B18F00E2F052 /* RequestMethod.swift in Sources */,
 				F19438C82B34C72500E2F052 /* CharactersViewController.swift in Sources */,
 				F11C552E2B3BBD1200128E6D /* EpisodeDetailsViewController.swift in Sources */,
@@ -647,14 +724,17 @@
 				F15D45EE2B360F870036066F /* EpisodesViewModel.swift in Sources */,
 				F19438BA2B34AFE200E2F052 /* Endpoint.swift in Sources */,
 				F14550502B3B01CE00C0A792 /* CharacterDetailsViewController.swift in Sources */,
+				F1DAE95D2B3DF1CA00639956 /* DefaultTextField.swift in Sources */,
 				F19438D12B34D4E300E2F052 /* Characters.swift in Sources */,
 				F15D45D52B3609B80036066F /* LocationsEndpoint.swift in Sources */,
+				F1DAE95A2B3DEF7F00639956 /* Login+TextFieldDelegate.swift in Sources */,
 				F16AC4CB2B3B9E2B00B6E37B /* LocationDetailsViewModel.swift in Sources */,
 				F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */,
 				F1A5E4352B31E739003C13DE /* HomeCoordinator.swift in Sources */,
 				F14550562B3B022E00C0A792 /* CharacterDetailsViewModel.swift in Sources */,
 				F19438D32B34D6CA00E2F052 /* CharactersService.swift in Sources */,
 				F16AC4CD2B3B9E3D00B6E37B /* LocationDetailsCoordinator.swift in Sources */,
+				F18374332B3C57E400B3FCBD /* LoginViewController.swift in Sources */,
 				F15D45F52B360FB50036066F /* Episodes+TableViewDelegate.swift in Sources */,
 				F15D45F72B3611210036066F /* EpisodesService.swift in Sources */,
 				F1A5E41B2B31E5BA003C13DE /* AppDelegate.swift in Sources */,

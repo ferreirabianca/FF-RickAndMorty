@@ -10,13 +10,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: HomeCoordinator?
+    var coordinator: LoginCoordinator?
     var navController: UINavigationController = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        coordinator = HomeCoordinator(navController: navController)
+        coordinator = LoginCoordinator(navController: navController)
         coordinator?.start()
         
         self.window?.rootViewController = navController
