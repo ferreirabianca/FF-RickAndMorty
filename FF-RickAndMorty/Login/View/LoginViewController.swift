@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Entrar", for: .normal)
         button.backgroundColor = .blue
+        button.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -56,6 +57,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
+    }
+    
+    //MARK: - objc functions
+    @objc func didTapLogin(_ sender: Any) {
+        guard let email = emailTextfield.text,
+              let password = passwordTextfield.text 
+        else {
+            return
+        }
+        viewModel?.loginTapped(email: "joao@test.com", password: "teste")
     }
     
     //MARK: - Private functions

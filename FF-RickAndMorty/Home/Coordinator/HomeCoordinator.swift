@@ -23,7 +23,7 @@ class HomeCoordinator: Coordinator {
         vc.viewModel = viewModel
         vc.viewModel?.coordinator = self
         
-        self.navController.pushViewController(vc, animated: true)
+        self.navController.setViewControllers([vc], animated: true)
     }
     
     func finish() {}

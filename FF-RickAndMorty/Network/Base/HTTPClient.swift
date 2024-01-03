@@ -18,7 +18,7 @@ extension HTTPClient {
         //TODO: when the url needed headers, is necessary to see whats the problem with urlcomponents creation
         
         guard let url = URL(string: urlString) else {
-            return .failure(.invalidURL)
+            return .failure(.init(msg: "url not found", statusCode: 404))
         }
         
         var request = URLRequest(url: url)
@@ -32,25 +32,26 @@ extension HTTPClient {
         do {
             let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
             guard let response = response as? HTTPURLResponse else {
-                return .failure(.noResponse)
+                return .failure(.init(msg: "no response found", statusCode: 404))
             }
+            debugPrint(response.statusCode)
             
             switch response.statusCode {
             case 200...299:
                 guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
-                    return .failure(.decode)
+                    return .failure(.init(msg: "decode error", statusCode: 404))
                 }
                 return .success(decodedResponse)
                 
-            case 401:
-                return .failure(.unauthorized)
-                
             default:
-                return .failure(.unexpectedStatusCode)
+                guard let error = try? JSONDecoder().decode(RequestError.self, from: data) else {
+                    return .failure(.init(msg: "decode error failed", statusCode: 404))
+                }
+                return .failure(.init(msg: error.msg, statusCode: error.statusCode))
             }
             
         } catch {
-            return .failure(.unknown)
+            return .failure(.init(msg: "unkown", statusCode: 500))
         }
     }
 }
