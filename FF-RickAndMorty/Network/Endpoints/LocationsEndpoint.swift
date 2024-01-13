@@ -8,15 +8,15 @@
 import Foundation
 
 enum LocationsEndpoint {
-    case locations
+    case locations(pageNumber: Int)
     case location(id: Int)
 }
 
 extension LocationsEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .locations:
-            return "/location"
+        case .locations(let pageNumber):
+            return "/location?page=\(pageNumber)"
             
         case .location(let id):
             return "/location/\(id)"

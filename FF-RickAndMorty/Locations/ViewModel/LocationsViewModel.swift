@@ -15,9 +15,9 @@ class LocationsViewModel {
         coordinator?.showLocationDetails(location: location)
     }
     
-    func getLocations(completion: @escaping (Result<Locations, RequestError>) -> Void) {
+    func getLocations(pageNumber: Int, completion: @escaping (Result<Locations, RequestError>) -> Void) {
         Task(priority: .background) {
-            guard let result = await service?.getLocations() else {
+            guard let result = await service?.getLocations(page: pageNumber) else {
                 return
             }
             completion(result)

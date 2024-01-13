@@ -24,9 +24,9 @@ class EpisodesViewModel {
         }
     }
     
-    func getEpisodes(completion: @escaping (Result<Episodes, RequestError>) -> Void) {
+    func getEpisodes(pageNumber: Int, completion: @escaping (Result<Episodes, RequestError>) -> Void) {
         Task(priority: .background) {
-            guard let result = await service?.getEpisodes() else {
+            guard let result = await service?.getEpisodes(page: pageNumber) else {
                 return
             }
             completion(result)

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LocationsServiceable {
-    func getLocations() async -> Result<Locations, RequestError>
+    func getLocations(page: Int) async -> Result<Locations, RequestError>
     func getLocation(id: Int) async -> Result<Location, RequestError>
 }
 
@@ -18,8 +18,8 @@ struct LocationsService: HTTPClient, LocationsServiceable {
         return await sendRequest(endpoint: endpoint, responseModel: Location.self)
     }
     
-    func getLocations() async -> Result<Locations, RequestError> {
-        let endpoint = LocationsEndpoint.locations
+    func getLocations(page: Int) async -> Result<Locations, RequestError> {
+        let endpoint = LocationsEndpoint.locations(pageNumber: page)
         return await sendRequest(endpoint: endpoint, responseModel: Locations.self)
     }
 }

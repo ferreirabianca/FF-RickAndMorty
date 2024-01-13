@@ -95,6 +95,7 @@ class CharactersViewController: UIViewController {
             switch result {
             case .success(let response):
                 self.characters = response.results
+                self.numberOfPages = response.info.pages
                 success?(true)
                 
             case .failure(let failure):
@@ -109,6 +110,8 @@ class CharactersViewController: UIViewController {
         view.addSubview(nextPageButton)
         view.addSubview(beforeButton)
         view.backgroundColor = .blue
+        
+        //TODO: adjust the navigation config
         navigationItem.title = "Personagens"
         
         setupCells()
@@ -120,7 +123,7 @@ class CharactersViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: nextPageButton.topAnchor, constant: 10),
+            tableView.bottomAnchor.constraint(equalTo: nextPageButton.topAnchor, constant: -10),
             
             nextPageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             nextPageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -142,7 +145,7 @@ class CharactersViewController: UIViewController {
         self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
                                             transition: .crossDissolve(0.25))
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
             self.tableView.reloadData()
             self.tableView.stopSkeletonAnimation()
             self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))

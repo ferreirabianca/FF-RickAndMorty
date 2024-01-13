@@ -18,7 +18,6 @@ class CharactersCell: UITableViewCell {
     lazy var characterImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.isSkeletonable = true
         imageView.layer.cornerRadius = 15
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +29,6 @@ class CharactersCell: UITableViewCell {
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.isSkeletonable = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,7 +37,6 @@ class CharactersCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        self.isSkeletonable = true
         self.contentView.isSkeletonable = true
     }
     
