@@ -8,14 +8,15 @@
 import Foundation
 
 protocol CharactersServiceable {
-    func getCharacters() async -> Result<Characters, RequestError>
+    func getCharacters(page: Int?) async -> Result<Characters, RequestError>
     func getCaracter(id: Int) async -> Result<Character, RequestError>
 }
 
 struct CharactersService: HTTPClient, CharactersServiceable {
     
-    func getCharacters() async -> Result<Characters, RequestError> {
-        return await sendRequest(endpoint: CharactersEndpoint.characters, responseModel: Characters.self)
+    func getCharacters(page: Int?) async -> Result<Characters, RequestError> {
+        let endpoint = CharactersEndpoint.characters(page: page ?? 0)
+        return await sendRequest(endpoint: endpoint, responseModel: Characters.self)
     }
     
     func getCaracter(id: Int) async -> Result<Character, RequestError> {

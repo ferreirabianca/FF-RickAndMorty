@@ -86,6 +86,16 @@ class CharacterDetailsViewController: UIViewController {
         return label
     }()
     
+    lazy var episodesLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isSkeletonable = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +116,7 @@ class CharacterDetailsViewController: UIViewController {
         view.addSubview(originLabel)
         view.addSubview(genderLabel)
         view.addSubview(currentLocationLabel)
+        view.addSubview(episodesLabel)
         
         //TODO: validate character if is not nil and show empty state if necessary
         nameLabel.text = character?.name
@@ -115,6 +126,7 @@ class CharacterDetailsViewController: UIViewController {
         genderLabel.text = "Genero: \(character?.gender ?? "")"
         originLabel.text = "Localização de Origin: \(character?.origin.name ?? "")"
         currentLocationLabel.text = "Localização atual: \(character?.location.name ?? "")"
+        episodesLabel.text = "Apareceu em \(character?.episode.count ?? 0) episodios"
         setupImage(for: character?.image)
         setupConstraints()
     }
@@ -146,6 +158,11 @@ class CharacterDetailsViewController: UIViewController {
             currentLocationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: defaultSpacing),
             currentLocationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -defaultSpacing),
             currentLocationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            episodesLabel.topAnchor.constraint(equalTo: currentLocationLabel.bottomAnchor, constant: defaultSpacing),
+            episodesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: defaultSpacing),
+            episodesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -defaultSpacing),
+            episodesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
         ])
     }

@@ -28,8 +28,8 @@ class LoginCoordinator: Coordinator {
     func finish() {}
     
     func showHome() {
-        let coordinator = HomeCoordinator(childCoordinator: self.childCoordinator, navController: self.navController)
-        coordinator.start()
+//        let coordinator = HomeCoordinator(childCoordinator: self.childCoordinator, navController: self.navController)
+//        coordinator.start()
     }
     
     func showError(msg: String) {

@@ -8,15 +8,15 @@
 import Foundation
 
 enum CharactersEndpoint {
-    case characters
+    case characters(page: Int)
     case character(id: Int)
 }
 
 extension CharactersEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .characters:
-            return "/character"
+        case .characters(let page):
+            return "/character/?page=\(page)"
             
         case .character(let id):
             return "/character/\(id)"
