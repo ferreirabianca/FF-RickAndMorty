@@ -15,7 +15,7 @@ class EpisodesViewModel {
         coordinator?.gotoEpisodeDetails(episode: episode)
     }
     
-    func getEpisode(id: Int, completion: @escaping (Result<Episode, RequestError>) -> Void) {
+    func getEpisode(id: Int, completion: @escaping (Episode) -> Void) {
         Task(priority: .background) {
             guard let result = await service?.getEpisode(id: id) else {
                 return
@@ -24,12 +24,12 @@ class EpisodesViewModel {
         }
     }
     
-    func getEpisodes(pageNumber: Int, completion: @escaping (Result<Episodes, RequestError>) -> Void) {
+    func getEpisodes(pageNumber: Int, completion: @escaping ([Episode]) -> Void) {
         Task(priority: .background) {
             guard let result = await service?.getEpisodes(page: pageNumber) else {
                 return
             }
-            completion(result)
+            completion(result.results)
         }
     }
 }

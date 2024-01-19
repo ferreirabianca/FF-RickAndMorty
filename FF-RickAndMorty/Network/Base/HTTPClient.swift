@@ -8,19 +8,18 @@
 import Foundation
 
 protocol HTTPClient {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError>
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T
 }
 
 extension HTTPClient {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError> {
-        //url i was using urlcomponents, but its not working properly because of the /api, used on url, temporary solution
-        let urlString = "\(endpoint.scheme)\(endpoint.host)\(endpoint.path)"
-        //TODO: when the url needed headers, is necessary to see whats the problem with urlcomponents creation
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T {
+        let urlString = endpoint.url
         
         guard let url = URL(string: urlString) else {
-            return .failure(.init(msg: "url not found", statusCode: 404))
+            throw RequestError.invalidURL
         }
         
+        //TODO: when the url needed headers, is necessary to see whats the problem with urlcomponents creation
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
@@ -29,29 +28,17 @@ extension HTTPClient {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
         
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw RequestError.invalidResponse
+        }
+        
         do {
-            let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
-            guard let response = response as? HTTPURLResponse else {
-                return .failure(.init(msg: "no response found", statusCode: 404))
-            }
-            debugPrint(response.statusCode)
-            
-            switch response.statusCode {
-            case 200...299:
-                guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
-                    return .failure(.init(msg: "decode error", statusCode: 404))
-                }
-                return .success(decodedResponse)
-                
-            default:
-                guard let error = try? JSONDecoder().decode(RequestError.self, from: data) else {
-                    return .failure(.init(msg: "decode error failed", statusCode: 404))
-                }
-                return .failure(.init(msg: error.msg, statusCode: error.statusCode))
-            }
-            
+            let model = try JSONDecoder().decode(T.self, from: data)
+            return model
         } catch {
-            return .failure(.init(msg: "unkown", statusCode: 500))
+            throw RequestError.decodingError
         }
     }
 }

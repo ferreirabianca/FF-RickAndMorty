@@ -8,19 +8,27 @@
 import Foundation
 
 protocol EpisodesServiceable {
-    func getEpisodes(page: Int) async -> Result<Episodes, RequestError>
-    func getEpisode(id: Int) async -> Result<Episode, RequestError>
+    func getEpisodes(page: Int) async -> Episodes?
+    func getEpisode(id: Int) async -> Episode?
 }
 
 struct EpisodesService: HTTPClient, EpisodesServiceable {
-    func getEpisode(id: Int) async -> Result<Episode, RequestError> {
+    func getEpisode(id: Int) async -> Episode? {
         let endpoint = EpisodesEndpoint.episode(id: id)
-        return await sendRequest(endpoint: endpoint, responseModel: Episode.self)
+        do {
+            return try await sendRequest(endpoint: endpoint, responseModel: Episode.self)
+        } catch {
+            return nil
+        }
     }
     
-    func getEpisodes(page: Int) async -> Result<Episodes, RequestError> {
+    func getEpisodes(page: Int) async -> Episodes? {
         let endpoint = EpisodesEndpoint.episodes(pageNumber: page)
-        return await sendRequest(endpoint: endpoint, responseModel: Episodes.self)
+        do {
+            return try await sendRequest(endpoint: endpoint, responseModel: Episodes.self)
+        } catch {
+            return nil
+        }
     }
 }
 

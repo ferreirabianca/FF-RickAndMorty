@@ -31,15 +31,12 @@ extension EpisodesViewController: UITableViewDelegate, SkeletonTableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.getEpisode(id: episodes[indexPath.row].id, completion: { result in
-            switch result {
-            case .success(let episode):
+        Task {
+            viewModel?.getEpisode(id: episodes[indexPath.row].id, completion: { episode in
                 DispatchQueue.main.async {
                     self.viewModel?.gotoEpisodeDetails(with: episode)
                 }
-            case .failure(let failure):
-                print("\(failure)")
-            }
-        })
+            })
+        }
     }
 }

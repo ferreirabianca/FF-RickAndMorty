@@ -32,16 +32,12 @@ extension CharactersViewController: UITableViewDelegate, SkeletonTableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.getCharacter(id: characters[indexPath.row].id, completion: { result in
-            switch result {
-            case .success(let character):
+        Task {
+            viewModel?.getCharacter(id: characters[indexPath.row].id, completion: { character in
                 DispatchQueue.main.async {
                     self.viewModel?.gotoCharacterDetails(character: character)
                 }
-                
-            case .failure(let failure):
-                print("\(failure)")
-            }
-        })
+            })
+        }
     }
 }

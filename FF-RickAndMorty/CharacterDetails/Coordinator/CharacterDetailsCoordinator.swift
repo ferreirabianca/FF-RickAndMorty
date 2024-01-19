@@ -24,8 +24,9 @@ class CharacterDetailsCoordinator: Coordinator {
         vc.character = character
         vc.viewModel = viewModel
         vc.viewModel?.coordinator = self
+        vc.modalPresentationStyle = .popover
         
-        navController.pushViewController(vc, animated: true)
+        navController.present(vc, animated: true)
     }
     
     func finish() {}

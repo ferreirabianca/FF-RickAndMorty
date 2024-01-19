@@ -64,43 +64,26 @@ class EpisodesViewController: UIViewController {
     @objc func nextTapped(_ sender: Any) {
         if currentPage < numberOfPages {
             currentPage += 1
-            loadTableView(page: currentPage) { success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.reloadTableView()
-                    }
-                }
-            }
+            loadTableView(page: currentPage)
         }
     }
     
     @objc func beforeTapped(_ sender: Any) {
         if currentPage > 1 {
             currentPage -= 1
-            loadTableView(page: currentPage) { success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.reloadTableView()
-                    }
-                }
-            }
+            loadTableView(page: currentPage)
         }
     }
     
     //MARK: - Private Functions
     private func loadTableView(page: Int = 1, success: ((Bool) -> Void)? = nil) {
-        viewModel?.getEpisodes(pageNumber: page) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let response):
-                self.episodes = response.results
-                self.numberOfPages = response.info.pages
-                success?(true)
-                
-            case .failure(let failure):
-                print("error \(failure)")
-                success?(false)
-            }
+        Task {
+            viewModel?.getEpisodes(pageNumber: page, completion: { episodes in
+                self.episodes = episodes
+                DispatchQueue.main.async {
+                    self.reloadTableView()
+                }
+            })
         }
     }
     

@@ -17,6 +17,10 @@ protocol Endpoint {
 }
 
 extension Endpoint {
+    var url: String {
+        return "\(self.scheme)\(self.host)\(self.path)"
+    }
+    
     var scheme: String {
         return "https://"
     }

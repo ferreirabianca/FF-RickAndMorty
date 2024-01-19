@@ -8,14 +8,14 @@
 import Foundation
 
 protocol LoginServiceable {
-    func userLogin(email: String, password: String) async -> Result<User, RequestError>
+//    func userLogin(email: String, password: String) async -> Result<User, RequestError>
 }
 
 struct LoginService: HTTPClient, LoginServiceable {
-    func userLogin(email: String, password: String) async -> Result<User, RequestError> {
-        let endpoint = LoginEndpoint.login(email: email, password: password)
-        return await sendRequest(endpoint: endpoint, responseModel: User.self)
-    }
+//    func userLogin(email: String, password: String) async -> Result<User, RequestError> {
+//        let endpoint = LoginEndpoint.login(email: email, password: password)
+//        return await sendRequest(endpoint: endpoint, responseModel: User.self)
+//    }
 }
 
 

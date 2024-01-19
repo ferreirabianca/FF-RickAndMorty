@@ -13,25 +13,25 @@ class LoginViewModel {
     
     //MARK: - Functions
     func loginTapped(email: String, password: String) {
-        self.login(email: email, password: password) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    self.coordinator?.showHome()
-                case .failure(let failure):
-                    self.coordinator?.showError(msg: failure.msg)
-                }
-            }
-        }
+//        self.login(email: email, password: password) { result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(_):
+//                    self.coordinator?.showHome()
+//                case .failure(let failure):
+//                    self.coordinator?.showError(msg: failure.msg)
+//                }
+//            }
+//        }
     }
     
     //MARK: - Private functions
     private func login(email: String, password: String, completion: @escaping (Result<User, RequestError>) -> Void) {
-        Task(priority: .background) {
-            guard let result = await service?.userLogin(email: email, password: password) else {
-                return
-            }
-            completion(result)
-        }
+//        Task(priority: .background) {
+//            guard let result = await service?.userLogin(email: email, password: password) else {
+//                return
+//            }
+//            completion(result)
+//        }
     }
 }

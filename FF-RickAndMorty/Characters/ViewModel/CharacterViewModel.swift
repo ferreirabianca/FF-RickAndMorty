@@ -15,16 +15,16 @@ class CharactersViewModel {
         self.coordinator?.showCharacterDetails(character: character)
     }
     
-    func getCaracters(pageNumber: Int, completion: @escaping (Result<Characters, RequestError>) -> Void) {
+    func getCaracters(pageNumber: Int, completion: @escaping ([Character]) -> Void) {
         Task(priority: .background) {
             guard let result = await service?.getCharacters(page: pageNumber) else {
                 return
             }
-            completion(result)
+            completion(result.results)
         }
     }
     
-    func getCharacter(id: Int, completion: @escaping ((Result<Character, RequestError>) -> Void)) {
+    func getCharacter(id: Int, completion: @escaping (Character) -> Void) {
         Task(priority: .background) {
             guard let result = await self.service?.getCaracter(id: id) else {
                 return

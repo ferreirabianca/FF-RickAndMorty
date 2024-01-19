@@ -31,16 +31,12 @@ extension LocationsViewController: UITableViewDelegate, SkeletonTableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.getLocation(id: locations[indexPath.row].id, completion: { result in
-            switch result {
-            case .success(let location):
+        Task {
+            viewModel?.getLocation(id: locations[indexPath.row].id, completion: { location in
                 DispatchQueue.main.async {
                     self.viewModel?.gotoLocationDetails(with: location)
                 }
-                
-            case .failure(let failure):
-                print("\(failure)")
-            }
-        })
+            })
+        }
     }
 }

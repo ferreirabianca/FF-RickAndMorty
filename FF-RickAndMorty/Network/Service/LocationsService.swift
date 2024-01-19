@@ -8,18 +8,27 @@
 import Foundation
 
 protocol LocationsServiceable {
-    func getLocations(page: Int) async -> Result<Locations, RequestError>
-    func getLocation(id: Int) async -> Result<Location, RequestError>
+    func getLocations(page: Int) async -> Locations?
+    func getLocation(id: Int) async -> Location?
 }
 
 struct LocationsService: HTTPClient, LocationsServiceable {
-    func getLocation(id: Int) async -> Result<Location, RequestError> {
+    func getLocation(id: Int) async -> Location? {
         let endpoint = LocationsEndpoint.location(id: id)
-        return await sendRequest(endpoint: endpoint, responseModel: Location.self)
+        do {
+            return try await sendRequest(endpoint: endpoint, responseModel: Location.self)
+        } catch {
+            return nil
+        }
     }
     
-    func getLocations(page: Int) async -> Result<Locations, RequestError> {
+    func getLocations(page: Int) async -> Locations? {
         let endpoint = LocationsEndpoint.locations(pageNumber: page)
-        return await sendRequest(endpoint: endpoint, responseModel: Locations.self)
+        do {
+            return try await sendRequest(endpoint: endpoint, responseModel: Locations.self)
+        } catch {
+            return nil
+        }
+        
     }
 }

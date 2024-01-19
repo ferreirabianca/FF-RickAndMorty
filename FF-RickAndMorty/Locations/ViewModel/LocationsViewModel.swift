@@ -15,18 +15,25 @@ class LocationsViewModel {
         coordinator?.showLocationDetails(location: location)
     }
     
-    func getLocations(pageNumber: Int, completion: @escaping (Result<Locations, RequestError>) -> Void) {
+    func getLocations(pageNumber: Int) async -> [Location]? {
+        guard let locations = await service?.getLocations(page: pageNumber) else {
+            return nil
+        }
+        return locations.results
+    }
+    
+    func getLocations(pageNumber: Int, completion: @escaping ([Location]) -> Void) {
         Task(priority: .background) {
             guard let result = await service?.getLocations(page: pageNumber) else {
                 return
             }
-            completion(result)
+            completion(result.results)
         }
     }
     
-    func getLocation(id: Int, completion: @escaping (Result<Location, RequestError>) -> Void) {
+    func getLocation(id: Int, completion: @escaping (Location) -> Void) {
         Task(priority: .background) {
-            guard let result = await service?.getLocation(id: id) else {
+            guard let result = await self.service?.getLocation(id: id) else {
                 return
             }
             completion(result)

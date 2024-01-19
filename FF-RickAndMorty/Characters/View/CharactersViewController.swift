@@ -65,43 +65,26 @@ class CharactersViewController: UIViewController {
     @objc func nextTapped(_ sender: Any) {
         if currentPage <= numberOfPages {
             currentPage += 1
-            loadTableView(page: currentPage) { success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.reloadTableView()
-                    }
-                }
-            }
+            loadTableView(page: currentPage)
         }
     }
     
     @objc func beforeTapped(_ sender: Any) {
         if currentPage > 1 {
             currentPage -= 1
-            loadTableView(page: currentPage) { success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.reloadTableView()
-                    }
-                }
-            }
+            loadTableView(page: currentPage)
         }
     }
     
     //MARK: - Private Functions
-    private func loadTableView(page: Int = 1, success: ((Bool) -> Void)? = nil) {
-        viewModel?.getCaracters(pageNumber: page) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let response):
-                self.characters = response.results
-                self.numberOfPages = response.info.pages
-                success?(true)
-                
-            case .failure(let failure):
-                print("error \(failure)")
-                success?(false)
-            }
+    private func loadTableView(page: Int = 1) {
+        Task {
+            viewModel?.getCaracters(pageNumber: page, completion: { characters in
+                self.characters = characters
+                DispatchQueue.main.async {
+                    self.reloadTableView()
+                }
+            })
         }
     }
     
@@ -145,10 +128,9 @@ class CharactersViewController: UIViewController {
         self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
                                             transition: .crossDissolve(0.25))
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-            self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             self.tableView.stopSkeletonAnimation()
-            self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+            self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
         })
     }
 }
