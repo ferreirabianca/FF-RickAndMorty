@@ -125,12 +125,13 @@ class CharactersViewController: UIViewController {
     }
     
     private func reloadTableView() {
+        tableView.reloadData()
         self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
                                             transition: .crossDissolve(0.25))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             self.tableView.stopSkeletonAnimation()
-            self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+            self.tableView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.25))
         })
     }
 }

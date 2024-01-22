@@ -22,10 +22,11 @@ extension CharactersViewController: UITableViewDelegate, SkeletonTableViewDataSo
         else {
             return UITableViewCell()
         }
-        let data = CharactersCellData(name: characters[indexPath.row].name,
-                                      image: characters[indexPath.row].image)
-        cell.setupCell(data: data)
-        
+        let characterInfo = CharactersCellData(
+            name: characters[indexPath.row].name,
+            image: characters[indexPath.row].image
+        )
+        cell.setupCell(character: characterInfo)
         cell.selectionStyle = .none
         
         return cell

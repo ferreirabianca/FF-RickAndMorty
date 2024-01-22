@@ -7,6 +7,7 @@
 
 import UIKit
 import SkeletonView
+import Kingfisher
 
 struct CharactersCellData {
     var name: String
@@ -58,13 +59,9 @@ class CharactersCell: UITableViewCell {
     }
     
     //MARK: - Functions
-    func setupCell(data: CharactersCellData) {
-        characterName.text = data.name
-        
-        guard let imageURL = URL(string: data.image) else {
-            return
-        }
-        characterImage.loadFrom(url: imageURL)
+    func setupCell(character: CharactersCellData) {
+        characterName.text = character.name
+        setupImage(for: character.image)
     }
     
     //MARK: - Private Functions
@@ -86,5 +83,12 @@ class CharactersCell: UITableViewCell {
             characterName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             characterName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+    }
+    
+    private func setupImage(for image: String?) {
+        guard let image, let imageURL = URL(string: image) else {
+            return
+        }
+        characterImage.kf.setImage(with: imageURL)
     }
 }

@@ -64,6 +64,7 @@
 		F1DAE9622B3DF4AD00639956 /* LoginEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE9612B3DF4AD00639956 /* LoginEndpoint.swift */; };
 		F1DAE9642B3DF6CF00639956 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE9632B3DF6CF00639956 /* LoginService.swift */; };
 		F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DE5CE72B338DF800226D47 /* CharacterViewModel.swift */; };
+		F1F1F3F32B5EFE3100F394D8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F1F1F3F22B5EFE3100F394D8 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F1F3F32B5EFE3100F394D8 /* Kingfisher in Frameworks */,
 				F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +639,7 @@
 			name = "FF-RickAndMorty";
 			packageProductDependencies = (
 				F19378252B35B5D10069DAEF /* SkeletonView */,
+				F1F1F3F22B5EFE3100F394D8 /* Kingfisher */,
 			);
 			productName = "FF-RickAndMorty";
 			productReference = F1A5E4172B31E5BA003C13DE /* FF-RickAndMorty.app */;
@@ -668,6 +671,7 @@
 			mainGroup = F1A5E40E2B31E5BA003C13DE;
 			packageReferences = (
 				F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				F1F1F3F12B5EFE3100F394D8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F1A5E4182B31E5BA003C13DE /* Products */;
 			projectDirPath = "";
@@ -983,6 +987,14 @@
 				version = 1.30.0;
 			};
 		};
+		F1F1F3F12B5EFE3100F394D8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -990,6 +1002,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
+		};
+		F1F1F3F22B5EFE3100F394D8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1F1F3F12B5EFE3100F394D8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CharacterDetailsViewController: UIViewController {
     //MARK: - Properties
@@ -171,6 +172,6 @@ class CharacterDetailsViewController: UIViewController {
         guard let image, let imageURL = URL(string: image) else {
             return
         }
-        imageIcon.loadFrom(url: imageURL)
+        imageIcon.kf.setImage(with: imageURL)
     }
 }
