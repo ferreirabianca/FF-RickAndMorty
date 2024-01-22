@@ -23,8 +23,8 @@ class CharactersViewController: UIViewController {
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
-        table.estimatedRowHeight = 200
-        table.rowHeight = 200
+        table.estimatedRowHeight = 80
+        table.rowHeight = 80
         table.separatorStyle = .none
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -92,7 +92,7 @@ class CharactersViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(nextPageButton)
         view.addSubview(beforeButton)
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         
         //TODO: adjust the navigation config
         navigationItem.title = "Personagens"

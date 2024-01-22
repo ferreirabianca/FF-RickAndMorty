@@ -24,7 +24,8 @@ extension CharactersViewController: UITableViewDelegate, SkeletonTableViewDataSo
         }
         let characterInfo = CharactersCellData(
             name: characters[indexPath.row].name,
-            image: characters[indexPath.row].image
+            image: characters[indexPath.row].image,
+            status: characters[indexPath.row].status
         )
         cell.setupCell(character: characterInfo)
         cell.selectionStyle = .none
