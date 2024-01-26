@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class CharacterDetailsViewController: UIViewController {
     //MARK: - Properties
@@ -128,7 +127,7 @@ class CharacterDetailsViewController: UIViewController {
         originLabel.text = "Localização de Origin: \(character?.origin.name ?? "")"
         currentLocationLabel.text = "Localização atual: \(character?.location.name ?? "")"
         episodesLabel.text = "Apareceu em \(character?.episode.count ?? 0) episodios"
-        setupImage(for: character?.image)
+        imageIcon.setImage(from: character?.image)
         setupConstraints()
     }
     
@@ -166,12 +165,5 @@ class CharacterDetailsViewController: UIViewController {
             episodesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
         ])
-    }
-    
-    private func setupImage(for image: String?) {
-        guard let image, let imageURL = URL(string: image) else {
-            return
-        }
-        imageIcon.kf.setImage(with: imageURL)
     }
 }

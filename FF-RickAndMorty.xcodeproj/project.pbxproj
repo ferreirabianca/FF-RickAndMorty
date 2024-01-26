@@ -65,6 +65,8 @@
 		F1DAE9642B3DF6CF00639956 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DAE9632B3DF6CF00639956 /* LoginService.swift */; };
 		F1DE5CE82B338DF800226D47 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DE5CE72B338DF800226D47 /* CharacterViewModel.swift */; };
 		F1F1F3F32B5EFE3100F394D8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F1F1F3F22B5EFE3100F394D8 /* Kingfisher */; };
+		F1F1F3F72B5F069A00F394D8 /* FavoriteCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1F3F62B5F069A00F394D8 /* FavoriteCharactersViewController.swift */; };
+		F1F1F3FA2B5F0C1000F394D8 /* FavoriteCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1F3F92B5F0C1000F394D8 /* FavoriteCharacterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +128,8 @@
 		F1DAE9612B3DF4AD00639956 /* LoginEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEndpoint.swift; sourceTree = "<group>"; };
 		F1DAE9632B3DF6CF00639956 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		F1DE5CE72B338DF800226D47 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		F1F1F3F62B5F069A00F394D8 /* FavoriteCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersViewController.swift; sourceTree = "<group>"; };
+		F1F1F3F92B5F0C1000F394D8 /* FavoriteCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,13 +504,13 @@
 		F1A5E4192B31E5BA003C13DE /* FF-RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				F1F1F3F42B5F067000F394D8 /* FavoriteCharacters */,
 				F1A5E4282B31E5BC003C13DE /* Info.plist */,
 				F15D45FF2B361CE50036066F /* CharacterDetails */,
 				F1DE5CE12B338A5F00226D47 /* Characters */,
 				F1A5E4312B31E6E2003C13DE /* Coordinator */,
 				F11C55272B3BBCE000128E6D /* EpisodeDetails */,
 				F15D45E62B360F550036066F /* Episodes */,
-				F1037B342B34E93E00321903 /* Extensions */,
 				F1A5E42E2B31E6D3003C13DE /* Home */,
 				F1806E482B3B9C4A009B89EC /* LocationDetails */,
 				F15D45D62B360A510036066F /* Locations */,
@@ -540,6 +544,7 @@
 		F1A5E4302B31E6DB003C13DE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1037B342B34E93E00321903 /* Extensions */,
 				F1DAE95E2B3DF2A000639956 /* Utils */,
 				F1DAE95B2B3DF1A400639956 /* CustomViews */,
 				F1A5E41A2B31E5BA003C13DE /* AppDelegate.swift */,
@@ -621,6 +626,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F1F1F3F42B5F067000F394D8 /* FavoriteCharacters */ = {
+			isa = PBXGroup;
+			children = (
+				F1F1F3F82B5F0BCF00F394D8 /* Subviews */,
+				F1F1F3F52B5F067E00F394D8 /* View */,
+			);
+			path = FavoriteCharacters;
+			sourceTree = "<group>";
+		};
+		F1F1F3F52B5F067E00F394D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F1F1F3F62B5F069A00F394D8 /* FavoriteCharactersViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1F1F3F82B5F0BCF00F394D8 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F1F1F3F92B5F0C1000F394D8 /* FavoriteCharacterCollectionViewCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -699,6 +729,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F1F3FA2B5F0C1000F394D8 /* FavoriteCharacterCollectionViewCell.swift in Sources */,
 				F19438CF2B34D16B00E2F052 /* HomeViewModel.swift in Sources */,
 				F19438C32B34B53C00E2F052 /* CharactersEndpoint.swift in Sources */,
 				F15D45FB2B3611DA0036066F /* Info.swift in Sources */,
@@ -713,6 +744,7 @@
 				F15D45E52B360CB00036066F /* LocationsCell.swift in Sources */,
 				F15D45DB2B360A740036066F /* LocationsCoordinator.swift in Sources */,
 				F15D45E22B360C600036066F /* Locations+TableViewDelegate.swift in Sources */,
+				F1F1F3F72B5F069A00F394D8 /* FavoriteCharactersViewController.swift in Sources */,
 				F15D45FE2B3614820036066F /* EpisodesEndpoint.swift in Sources */,
 				F15D45DD2B360AA80036066F /* LocationsViewController.swift in Sources */,
 				F15D45F02B360F900036066F /* EpisodesCoordinator.swift in Sources */,
