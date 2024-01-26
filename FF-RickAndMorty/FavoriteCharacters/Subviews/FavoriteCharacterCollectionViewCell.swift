@@ -7,62 +7,79 @@
 
 import UIKit
 
-class FavoriteCharacterCollectionViewCell: UIViewController {
-    
+class FavoriteCharacterCollectionViewCell: UICollectionViewCell {
     //MARK: - Views
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var imageIcon: UIImageView = {
+    private lazy var characterImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "house")
-        imageView.contentMode = .scaleAspectFit
-        imageView.isSkeletonable = true
-        imageView.layer.cornerRadius = 15
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        let icon = UIImage(systemName: "heart.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        button.setImage(icon, for: .normal)
+        button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     //MARK: - Lifecyle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - objc Functions
+    @objc func didTapFavoriteButton(_ sender: UIButton) {
+        print("favorite tapped")
+    }
+    
+    //MARK: - Functions
+    func setup(_ character: FavoriteCharacter) {
+        characterImage.setImage(from: character.image)
+        nameLabel.text = character.name
+        favoriteButton.isSelected = character.isFavorite
     }
     
     //MARK: - Private Functions
     private func setupViews() {
-        view.addSubview(containerView)
-        containerView.addSubview(imageIcon)
-        view.backgroundColor = .gray
+        addSubview(characterImage)
+        addSubview(nameLabel)
+        addSubview(favoriteButton)
         
         setupConstraints()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 200),
-            containerView.widthAnchor.constraint(equalToConstant: 115),
+            characterImage.topAnchor.constraint(equalTo: topAnchor),
+            characterImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterImage.heightAnchor.constraint(equalToConstant: 150),
             
-            imageIcon.topAnchor.constraint(equalTo: containerView.topAnchor),
-            imageIcon.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            imageIcon.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            imageIcon.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            nameLabel.topAnchor.constraint(equalTo: characterImage.bottomAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            favoriteButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            favoriteButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
-    
-    private func setup(_ character: Character) {
-        
-    }
-}
-
-@available(iOS 17.0, *)
-#Preview {
-    FavoriteCharacterCollectionViewCell()
 }
