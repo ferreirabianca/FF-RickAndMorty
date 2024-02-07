@@ -9,10 +9,13 @@ import Foundation
 @testable import FF_RickAndMorty
 
 class MockCharactersService: CharactersServiceable {
-    var characters: Result<Characters, RequestError>!
+    var mockCharactersResult: Result<Characters, RequestError>?
     
     func getCharacters(page: Int?) async -> Result<Characters, RequestError> {
-        return .failure(.decodingError)
+        if let mockCharactersResult {
+            return mockCharactersResult
+        }
+        return .failure(.invalidResponse)
     }
     
     func getCaracter(id: Int) async -> Result<Character, RequestError> {
@@ -34,22 +37,18 @@ class MockCharactersService: CharactersServiceable {
         return nil
     }
     
-    func readingJSONFile() -> Characters? {
-        // Name of your JSON file
-        let filename = "CharactersMock"
+    func getJsonFrom<T: Decodable>(fileName: String, responseModel: T.Type) -> T? {
         
         // Read JSON data from file
-        if let jsonData = readJSONFromFile(filename: filename) {
+        if let jsonData = readJSONFromFile(filename: fileName) {
             do {
                 // Parse JSON data
                 let decoder = JSONDecoder()
-                let characters = try decoder.decode(Characters.self, from: jsonData)
-                self.characters = .success(characters)
-                return characters
+                let model = try decoder.decode(T.self, from: jsonData)
+                return model
             } catch {}
         }
         
         return nil
     }
-    
 }

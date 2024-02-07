@@ -32,10 +32,9 @@ class CharactersViewModel: CharacterViewModelProtocol {
     }
     
     func getCharacters(pageNumber: Int) {
-        Task(priority: .high) {
-            guard let result = await service?.getCharacters(page: pageNumber) else {
-                return
-            }
+        Task(priority: .low) {
+            let result = await service?.getCharacters(page: pageNumber)
+            
             switch result {
             case .success(let characters):
                 self.characters = characters.results
@@ -43,6 +42,8 @@ class CharactersViewModel: CharacterViewModelProtocol {
                 
             case .failure(_):
                 self.onFailure?()
+            default:
+                break;
             }
         }
     }

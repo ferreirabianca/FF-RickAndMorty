@@ -81,10 +81,13 @@ class CharactersViewController: UIViewController {
         viewModel?.getCharacters(pageNumber: page)
         viewModel?.onSuccess = { [weak self] in
             self?.characters = (self?.viewModel?.characters)!
-            
             DispatchQueue.main.async {
                 self?.reloadTableView()
             }
+        }
+        
+        viewModel?.onFailure = { [weak self] in
+            self?.showError()
         }
     }
     
@@ -133,5 +136,16 @@ class CharactersViewController: UIViewController {
             self.tableView.stopSkeletonAnimation()
             self.tableView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.25))
         })
+    }
+    
+    private func showError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Ocorreu um erro", message: "Não foi possivel retornar os personagens, pagina não existe.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                alert.dismiss(animated: true)
+            }))
+            
+            self.present(alert, animated: true)
+        }
     }
 }

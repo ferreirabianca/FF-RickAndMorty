@@ -12,8 +12,7 @@ protocol CharactersServiceable {
     func getCaracter(id: Int) async -> Result<Character, RequestError>
 }
 
-struct CharactersService: HTTPClient, CharactersServiceable {
-    
+struct CharactersService: HTTPClient, CharactersServiceable {    
     func getCharacters(page: Int?) async -> Result<Characters, RequestError> {
         let endpoint = CharactersEndpoint.characters(page: page ?? 0)
         return await sendRequest(endpoint: endpoint, responseModel: Characters.self)

@@ -10,7 +10,7 @@ import UIKit
 class CharactersCoordinator: Coordinator {
     var childCoordinator: [Coordinator]
     var navController: UINavigationController
-    var viewModel = CharactersViewModel(service: CharactersService())
+    let charactersService: CharactersServiceable = CharactersService()
     
     init(childCoordinator: [Coordinator], navController: UINavigationController) {
         self.childCoordinator = childCoordinator
@@ -19,7 +19,7 @@ class CharactersCoordinator: Coordinator {
     
     func start() {
         let vc = CharactersViewController()
-        vc.viewModel = viewModel
+        vc.viewModel = CharactersViewModel(service: charactersService)
         vc.viewModel?.coordinator = self
         
         navController.pushViewController(vc, animated: true)
