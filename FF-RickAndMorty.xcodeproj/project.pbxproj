@@ -39,6 +39,7 @@
 		F17166202B72A0CB00187DE3 /* MockCharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171661F2B72A0CB00187DE3 /* MockCharactersService.swift */; };
 		F17166222B72A22500187DE3 /* CharactersMock.json in Resources */ = {isa = PBXBuildFile; fileRef = F17166212B72A22500187DE3 /* CharactersMock.json */; };
 		F17166242B72A4A500187DE3 /* CharactersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17166232B72A4A500187DE3 /* CharactersViewModelTests.swift */; };
+		F17166262B74018B00187DE3 /* CharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = F17166252B74018A00187DE3 /* CharacterMock.json */; };
 		F18374332B3C57E400B3FCBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18374322B3C57E400B3FCBD /* LoginViewController.swift */; };
 		F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F19378252B35B5D10069DAEF /* SkeletonView */; };
 		F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */; };
@@ -117,6 +118,7 @@
 		F171661F2B72A0CB00187DE3 /* MockCharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharactersService.swift; sourceTree = "<group>"; };
 		F17166212B72A22500187DE3 /* CharactersMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharactersMock.json; sourceTree = "<group>"; };
 		F17166232B72A4A500187DE3 /* CharactersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelTests.swift; sourceTree = "<group>"; };
+		F17166252B74018A00187DE3 /* CharacterMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharacterMock.json; sourceTree = "<group>"; };
 		F18374322B3C57E400B3FCBD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Characters+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		F19438B92B34AFE200E2F052 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -402,9 +404,10 @@
 		F171661C2B729C4500187DE3 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				F17166252B74018A00187DE3 /* CharacterMock.json */,
 				F17166212B72A22500187DE3 /* CharactersMock.json */,
-				F171661F2B72A0CB00187DE3 /* MockCharactersService.swift */,
 				F17166232B72A4A500187DE3 /* CharactersViewModelTests.swift */,
+				F171661F2B72A0CB00187DE3 /* MockCharactersService.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F17166222B72A22500187DE3 /* CharactersMock.json in Resources */,
+				F17166262B74018B00187DE3 /* CharacterMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

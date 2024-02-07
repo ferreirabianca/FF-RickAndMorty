@@ -10,18 +10,19 @@ import Foundation
 protocol CharacterViewModelProtocol {
     var coordinator: CharactersCoordinator? { get set }
     var characters: [Character] { get }
-    var onSuccess: (() -> (Void))? { get set }
-    var onFailure: (() -> (Void))? { get set }
+    var onSuccess: (() -> ())? { get set }
+    var onFailure: (() -> ())? { get set }
     
     func getCharacters(pageNumber: Int)
+    func getCharacter(id: Int)
 }
 
 class CharactersViewModel: CharacterViewModelProtocol {
     weak var coordinator: CharactersCoordinator?
     var service: CharactersServiceable?
     var characters: [Character] = []
-    var onSuccess: (() -> (Void))?
-    var onFailure: (() -> (Void))?
+    var onSuccess: (() -> ())?
+    var onFailure: (() -> ())?
     
     init(service: CharactersServiceable?) {
         self.service = service
@@ -32,7 +33,7 @@ class CharactersViewModel: CharacterViewModelProtocol {
     }
     
     func getCharacters(pageNumber: Int) {
-        Task(priority: .low) {
+        Task(priority: .background) {
             let result = await service?.getCharacters(page: pageNumber)
             
             switch result {
@@ -40,20 +41,31 @@ class CharactersViewModel: CharacterViewModelProtocol {
                 self.characters = characters.results
                 self.onSuccess?()
                 
-            case .failure(_):
+            case .failure:
                 self.onFailure?()
+                
             default:
                 break;
             }
         }
     }
     
-    func getCharacter(id: Int, completion: @escaping (Character) -> Void) {
-//        Task(priority: .background) {
-//            guard let result = await self.service?.getCaracter(id: id) else {
-//                return
-//            }
-//            completion(result)
-//        }
+    func getCharacter(id: Int) {
+        Task(priority: .background) {
+            let result = await self.service?.getCaracter(id: id)
+            
+            switch result {
+            case .success(let character):
+                DispatchQueue.main.async {
+                    self.gotoCharacterDetails(character: character)
+                }
+                
+            case .failure:
+                self.onFailure?()
+                
+            default:
+                break;
+            }
+        }
     }
 }

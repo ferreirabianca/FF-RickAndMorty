@@ -25,7 +25,7 @@ class CharactersViewModelTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_on_API_success() {
+    func test_on_API_success_getting_all_characters() {
         //given
         let exp = expectation(description: "Getting Characters")
         let characters = characterService.getJsonFrom(fileName: "CharactersMock", responseModel: Characters.self)
@@ -44,7 +44,7 @@ class CharactersViewModelTests: XCTestCase {
         XCTAssertEqual(sut.characters.first?.name, "Aqua Morty")
     }
     
-    func test_on_API_failure() {
+    func test_on_API_failure_getting_all_characters() {
         let exp = expectation(description: "Getting Characters")
         characterService.mockCharactersResult = .failure(.decodingError)
         

@@ -10,6 +10,7 @@ import Foundation
 
 class MockCharactersService: CharactersServiceable {
     var mockCharactersResult: Result<Characters, RequestError>?
+    var mockCharacterResult: Result<Character, RequestError>?
     
     func getCharacters(page: Int?) async -> Result<Characters, RequestError> {
         if let mockCharactersResult {
@@ -19,7 +20,10 @@ class MockCharactersService: CharactersServiceable {
     }
     
     func getCaracter(id: Int) async -> Result<Character, RequestError> {
-        return .failure(.decodingError)
+        if let mockCharacterResult {
+            return mockCharacterResult
+        }
+        return .failure(.invalidResponse)
     }
     
     func readJSONFromFile(filename: String) -> Data? {
