@@ -40,6 +40,10 @@
 		F17166222B72A22500187DE3 /* CharactersMock.json in Resources */ = {isa = PBXBuildFile; fileRef = F17166212B72A22500187DE3 /* CharactersMock.json */; };
 		F17166242B72A4A500187DE3 /* CharactersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17166232B72A4A500187DE3 /* CharactersViewModelTests.swift */; };
 		F17166262B74018B00187DE3 /* CharacterMock.json in Resources */ = {isa = PBXBuildFile; fileRef = F17166252B74018A00187DE3 /* CharacterMock.json */; };
+		F17166292B740E7800187DE3 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F17166282B740E7800187DE3 /* InlineSnapshotTesting */; };
+		F171662B2B740E7800187DE3 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F171662A2B740E7800187DE3 /* SnapshotTesting */; };
+		F171662E2B740EE400187DE3 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171662D2B740EE400187DE3 /* HomeViewControllerTests.swift */; };
+		F17166302B74155E00187DE3 /* CharactesrViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171662F2B74155E00187DE3 /* CharactesrViewControllerTests.swift */; };
 		F18374332B3C57E400B3FCBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18374322B3C57E400B3FCBD /* LoginViewController.swift */; };
 		F19378262B35B5D10069DAEF /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = F19378252B35B5D10069DAEF /* SkeletonView */; };
 		F19378292B35BE510069DAEF /* Characters+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */; };
@@ -119,6 +123,8 @@
 		F17166212B72A22500187DE3 /* CharactersMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CharactersMock.json; sourceTree = "<group>"; };
 		F17166232B72A4A500187DE3 /* CharactersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelTests.swift; sourceTree = "<group>"; };
 		F17166252B74018A00187DE3 /* CharacterMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharacterMock.json; sourceTree = "<group>"; };
+		F171662D2B740EE400187DE3 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		F171662F2B74155E00187DE3 /* CharactesrViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactesrViewControllerTests.swift; sourceTree = "<group>"; };
 		F18374322B3C57E400B3FCBD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F19378282B35BE510069DAEF /* Characters+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Characters+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		F19438B92B34AFE200E2F052 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17166292B740E7800187DE3 /* InlineSnapshotTesting in Frameworks */,
+				F171662B2B740E7800187DE3 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +404,7 @@
 		F17166142B729AF900187DE3 /* FF-RickAndMortyTests */ = {
 			isa = PBXGroup;
 			children = (
+				F171662C2B740ECC00187DE3 /* Home */,
 				F171661C2B729C4500187DE3 /* Characters */,
 			);
 			path = "FF-RickAndMortyTests";
@@ -408,8 +417,17 @@
 				F17166212B72A22500187DE3 /* CharactersMock.json */,
 				F17166232B72A4A500187DE3 /* CharactersViewModelTests.swift */,
 				F171661F2B72A0CB00187DE3 /* MockCharactersService.swift */,
+				F171662F2B74155E00187DE3 /* CharactesrViewControllerTests.swift */,
 			);
 			path = Characters;
+			sourceTree = "<group>";
+		};
+		F171662C2B740ECC00187DE3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F171662D2B740EE400187DE3 /* HomeViewControllerTests.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		F1806E482B3B9C4A009B89EC /* LocationDetails */ = {
@@ -726,6 +744,10 @@
 				F17166182B729AF900187DE3 /* PBXTargetDependency */,
 			);
 			name = "FF-RickAndMortyTests";
+			packageProductDependencies = (
+				F17166282B740E7800187DE3 /* InlineSnapshotTesting */,
+				F171662A2B740E7800187DE3 /* SnapshotTesting */,
+			);
 			productName = "FF-RickAndMortyTests";
 			productReference = F17166132B729AF900187DE3 /* FF-RickAndMortyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -783,6 +805,7 @@
 			packageReferences = (
 				F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				F1F1F3F12B5EFE3100F394D8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F17166272B740E7800187DE3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = F1A5E4182B31E5BA003C13DE /* Products */;
 			projectDirPath = "";
@@ -820,7 +843,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17166302B74155E00187DE3 /* CharactesrViewControllerTests.swift in Sources */,
 				F17166242B72A4A500187DE3 /* CharactersViewModelTests.swift in Sources */,
+				F171662E2B740EE400187DE3 /* HomeViewControllerTests.swift in Sources */,
 				F17166202B72A0CB00187DE3 /* MockCharactersService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1176,6 +1201,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F17166272B740E7800187DE3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.3;
+			};
+		};
 		F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
@@ -1195,6 +1228,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F17166282B740E7800187DE3 /* InlineSnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F17166272B740E7800187DE3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = InlineSnapshotTesting;
+		};
+		F171662A2B740E7800187DE3 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F17166272B740E7800187DE3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
 		F19378252B35B5D10069DAEF /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F19378242B35B5D10069DAEF /* XCRemoteSwiftPackageReference "SkeletonView" */;

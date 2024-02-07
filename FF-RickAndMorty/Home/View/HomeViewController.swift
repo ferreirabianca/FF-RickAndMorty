@@ -14,24 +14,21 @@ class HomeViewController: UIViewController {
     //MARK: - Views
     lazy var charactersView: HomeCategoryView = {
         let view = HomeCategoryView()
-        view.setupView(title: "Personagens", imageName: "characters-home-icon")
-        view.backgroundColor = .blue.withAlphaComponent(0.3)
+        view.setupView(title: "Personagens", imageName: "characters-home-icon", backgroundColor: .blue.withAlphaComponent(0.3))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var locationsView: HomeCategoryView = {
         let view = HomeCategoryView()
-        view.setupView(title: "Localização", imageName: "locations-home-icon")
-        view.backgroundColor = .green.withAlphaComponent(0.3)
+        view.setupView(title: "Localização", imageName: "locations-home-icon", backgroundColor: .green.withAlphaComponent(0.3))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var episodesView: HomeCategoryView = {
         let view = HomeCategoryView()
-        view.setupView(title: "Episodios", imageName: "episodes-home-icon")
-        view.backgroundColor = .red.withAlphaComponent(0.3)
+        view.setupView(title: "Episodios", imageName: "episodes-home-icon", backgroundColor: .red.withAlphaComponent(0.3))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

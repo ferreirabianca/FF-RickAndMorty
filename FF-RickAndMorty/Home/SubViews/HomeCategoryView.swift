@@ -31,9 +31,10 @@ class HomeCategoryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView(title: String, imageName: String) {
+    func setupView(title: String, imageName: String, backgroundColor: UIColor) {
         titleLabel.text = title
         backgroundImage.image = UIImage(named: imageName)
+        self.backgroundColor = backgroundColor
     }
     
     private func setupViews() {
