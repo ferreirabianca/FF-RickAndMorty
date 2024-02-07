@@ -14,21 +14,23 @@ protocol EpisodesServiceable {
 
 struct EpisodesService: HTTPClient, EpisodesServiceable {
     func getEpisode(id: Int) async -> Episode? {
-        let endpoint = EpisodesEndpoint.episode(id: id)
-        do {
-            return try await sendRequest(endpoint: endpoint, responseModel: Episode.self)
-        } catch {
-            return nil
-        }
+//        let endpoint = EpisodesEndpoint.episode(id: id)
+//        do {
+//            return try await sendRequest(endpoint: endpoint, responseModel: Episode.self)
+//        } catch {
+//            return nil
+//        }
+        return nil
     }
     
     func getEpisodes(page: Int) async -> Episodes? {
-        let endpoint = EpisodesEndpoint.episodes(pageNumber: page)
-        do {
-            return try await sendRequest(endpoint: endpoint, responseModel: Episodes.self)
-        } catch {
-            return nil
-        }
+//        let endpoint = EpisodesEndpoint.episodes(pageNumber: page)
+//        do {
+//            return try await sendRequest(endpoint: endpoint, responseModel: Episodes.self)
+//        } catch {
+//            return nil
+//        }
+        return nil
     }
 }
 

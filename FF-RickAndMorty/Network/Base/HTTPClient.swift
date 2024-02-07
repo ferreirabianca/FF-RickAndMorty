@@ -8,15 +8,15 @@
 import Foundation
 
 protocol HTTPClient {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError>
 }
 
 extension HTTPClient {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T {
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError> {
         let urlString = endpoint.url
         
         guard let url = URL(string: urlString) else {
-            throw RequestError.invalidURL
+            return .failure(.invalidURL)
         }
         
         //TODO: when the url needed headers, is necessary to see whats the problem with urlcomponents creation
@@ -28,17 +28,18 @@ extension HTTPClient {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
         
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw RequestError.invalidResponse
-        }
-        
         do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                return .failure(.invalidResponse)
+            }
+            
             let model = try JSONDecoder().decode(T.self, from: data)
-            return model
+            return .success(model)
+            
         } catch {
-            throw RequestError.decodingError
+            return .failure(.decodingError)
         }
     }
 }

@@ -29,7 +29,6 @@ class FavoriteCharactersViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.dataSource = self
         collection.delegate = self
-        collection.backgroundColor = .blue
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
@@ -38,6 +37,8 @@ class FavoriteCharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        
+        navigationItem.title = "Favoritos"
     }
     
     //MARK: - Functions

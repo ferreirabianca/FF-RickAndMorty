@@ -10,7 +10,7 @@ import SkeletonView
 
 class CharactersViewController: UIViewController {
     //MARK: - Properties
-    var viewModel: CharactersViewModel?
+    var viewModel: CharacterViewModelProtocol?
     
     //MARK: - Private Properties
     private(set) var characters: [Character] = []
@@ -78,13 +78,13 @@ class CharactersViewController: UIViewController {
     
     //MARK: - Private Functions
     private func loadTableView(page: Int = 1) {
-        Task {
-            viewModel?.getCaracters(pageNumber: page, completion: { characters in
-                self.characters = characters
-                DispatchQueue.main.async {
-                    self.reloadTableView()
-                }
-            })
+        viewModel?.getCharacters(pageNumber: page)
+        viewModel?.onSuccess = { [weak self] in
+            self?.characters = (self?.viewModel?.characters)!
+            
+            DispatchQueue.main.async {
+                self?.reloadTableView()
+            }
         }
     }
     
@@ -125,11 +125,11 @@ class CharactersViewController: UIViewController {
     }
     
     private func reloadTableView() {
-        tableView.reloadData()
         self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
                                             transition: .crossDissolve(0.25))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            self.tableView.reloadData()
             self.tableView.stopSkeletonAnimation()
             self.tableView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.25))
         })
