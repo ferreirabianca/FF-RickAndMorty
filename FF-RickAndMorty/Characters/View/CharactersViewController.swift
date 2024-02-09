@@ -11,23 +11,26 @@ import SkeletonView
 class CharactersViewController: UIViewController {
     //MARK: - Properties
     var viewModel: CharacterViewModelProtocol?
+    var numberOfPages: Int = 42
     
     //MARK: - Private Properties
     private(set) var characters: [Character] = []
     //TODO: remove the hardcode number get from api
-    private var numberOfPages: Int = 42
     private var currentPage: Int = 1
     
     //MARK: - Views
-    lazy var tableView: UITableView = {
-        let table = UITableView()
-        table.dataSource = self
-        table.delegate = self
-        table.estimatedRowHeight = 80
-        table.rowHeight = 80
-        table.separatorStyle = .none
-        table.translatesAutoresizingMaskIntoConstraints = false
-        return table
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        layout.scrollDirection = .vertical
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.dataSource = self
+        collection.delegate = self
+        collection.isPagingEnabled = true
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        return collection
     }()
     
     lazy var nextPageButton: UIButton = {
@@ -57,7 +60,7 @@ class CharactersViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.isSkeletonable = true
+        self.collectionView.isSkeletonable = true
         self.reloadTableView()
     }
     
@@ -92,7 +95,7 @@ class CharactersViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
         view.addSubview(nextPageButton)
         view.addSubview(beforeButton)
         view.backgroundColor = .white
@@ -100,16 +103,16 @@ class CharactersViewController: UIViewController {
         //TODO: adjust the navigation config
         navigationItem.title = "Personagens"
         
-        setupCells()
+        registerCells()
         setupConstraints()
     }
     
-    private func setupConstraints() {
+    private func setupConstraints() { 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: nextPageButton.topAnchor, constant: -10),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: nextPageButton.topAnchor, constant: -10),
             
             nextPageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             nextPageButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -123,18 +126,18 @@ class CharactersViewController: UIViewController {
         ])
     }
     
-    private func setupCells() {
-        self.tableView.register(CharactersCell.self, forCellReuseIdentifier: "cell")
+    private func registerCells() {
+        collectionView.register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
     
     private func reloadTableView() {
-        self.tableView.showAnimatedSkeleton(usingColor: .amethyst,
-                                            transition: .crossDissolve(0.25))
+        self.collectionView.showAnimatedSkeleton(
+            usingColor: .clouds,
+            transition: .crossDissolve(0.25))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            self.tableView.reloadData()
-            self.tableView.stopSkeletonAnimation()
-            self.tableView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.25))
+            self.collectionView.stopSkeletonAnimation()
+            self.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
         })
     }
     

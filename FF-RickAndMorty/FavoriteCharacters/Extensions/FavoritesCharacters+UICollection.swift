@@ -21,6 +21,7 @@ extension FavoriteCharactersViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width / 3) + 20, height: 200)
+        let width = (collectionView.bounds.width - 25) / 2
+        return CGSize(width: width, height: 200)
     }
 }
