@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol LoginServiceable {
+//protocol LoginServiceable {
 //    func userLogin(email: String, password: String) async -> Result<User, RequestError>
-}
+//}
 
-struct LoginService: HTTPClient, LoginServiceable {
+//struct LoginService: HTTPClient, LoginServiceable {
 //    func userLogin(email: String, password: String) async -> Result<User, RequestError> {
 //        let endpoint = LoginEndpoint.login(email: email, password: password)
 //        return await sendRequest(endpoint: endpoint, responseModel: User.self)
 //    }
-}
+//}
 
 
 struct User: Decodable {

@@ -52,7 +52,6 @@ class LocationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        loadTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,32 +62,12 @@ class LocationsViewController: UIViewController {
     
     //MARK: - objc Functions
     @objc func nextTapped(_ sender: Any) {
-        if currentPage < numberOfPages {
-            currentPage += 1
-            loadTableView(page: currentPage)
-        }
     }
     
     @objc func beforeTapped(_ sender: Any) {
-        if currentPage > 1 {
-            currentPage -= 1
-            loadTableView(page: currentPage)
-        }
     }
     
     //MARK: - Private Functions
-    private func loadTableView(page: Int = 1, success: ((Bool) -> Void)? = nil) {
-        Task {
-            viewModel?.getLocations(pageNumber: page, completion: { locations in
-                self.locations = locations
-                DispatchQueue.main.async {
-                    self.reloadTableView()
-                }
-            })
-        }
-        
-    }
-    
     private func setupViews() {
         view.addSubview(tableView)
         view.addSubview(nextPageButton)

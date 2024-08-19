@@ -30,13 +30,5 @@ extension LocationsViewController: UITableViewDelegate, SkeletonTableViewDataSou
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Task {
-            viewModel?.getLocation(id: locations[indexPath.row].id, completion: { location in
-                DispatchQueue.main.async {
-                    self.viewModel?.gotoLocationDetails(with: location)
-                }
-            })
-        }
-    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
 }

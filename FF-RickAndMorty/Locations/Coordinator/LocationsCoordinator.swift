@@ -20,8 +20,6 @@ class LocationsCoordinator: Coordinator {
     func start() {
         let vc = LocationsViewController()
         vc.viewModel = viewModel
-        vc.viewModel?.service = LocationsService()
-        vc.viewModel?.coordinator = self
         
         navController.pushViewController(vc, animated: true)
     }

@@ -20,8 +20,6 @@ class EpisodesCoordinator: Coordinator {
     func start() {
         let vc = EpisodesViewController()
         vc.viewModel = viewModel
-        vc.viewModel?.service = EpisodesService()
-        vc.viewModel?.coordinator = self
         
         navController.pushViewController(vc, animated: true)
     }

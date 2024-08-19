@@ -6,66 +6,74 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import Differentiator
+
+struct SectionOfCharacters {
+    var header: String
+    var items: [Character]
+}
+
+extension SectionOfCharacters: SectionModelType {
+    init(original: SectionOfCharacters, items: [Character]) {
+        self = original
+        self.items = items
+    }
+}
 
 protocol CharacterViewModelProtocol {
-    var coordinator: CharactersCoordinator? { get set }
-    var characters: [Character] { get }
-    var onSuccess: (() -> ())? { get set }
-    var onFailure: (() -> ())? { get set }
+    //inputs
+    var fetchCharacters: PublishSubject<Void> { get }
     
-    func getCharacters(pageNumber: Int)
-    func getCharacter(id: Int)
+    //outputs
+    var sections: Driver<[SectionOfCharacters]> { get }
+//    var isLoading: Driver<Bool> { get }
+    var error: Driver<Error> { get }
 }
 
 class CharactersViewModel: CharacterViewModelProtocol {
-    weak var coordinator: CharactersCoordinator?
-    var service: CharactersServiceable?
-    var characters: [Character] = []
-    var onSuccess: (() -> ())?
-    var onFailure: (() -> ())?
+    //MARK: Properties
+    var coordinator: CharactersCoordinator?
+    var fetchCharacters = PublishSubject<Void>()
+    var sections: Driver<[SectionOfCharacters]>
+//    var isLoading: Driver<Bool>
+    var error: Driver<Error>
+
+    //MARK: Private Properties
+//    private var service = CharactersService.shared
+    private let disposeBag = DisposeBag()
     
-    init(service: CharactersServiceable?) {
-        self.service = service
-    }
-    
-    func gotoCharacterDetails(character: Character) {
-        self.coordinator?.showCharacterDetails(character: character)
-    }
-    
-    func getCharacters(pageNumber: Int) {
-        Task(priority: .background) {
-            let result = await service?.getCharacters(page: pageNumber)
-            
-            switch result {
-            case .success(let characters):
-                self.characters = characters.results
-                self.onSuccess?()
-                
-            case .failure:
-                self.onFailure?()
-                
-            default:
-                break;
+    //MARK: Init
+    init(coordinator: CharactersCoordinator, service: CharactersService = .shared) {
+        self.coordinator = coordinator
+        let result = fetchCharacters
+            .flatMapLatest {
+                service.getCharacters()
+                    .asObservable()
+                    .materialize()
             }
-        }
+            .share()
+        
+        print(result.map({ caracters in
+            caracters
+        }))
+        
+        self.sections = result
+            .compactMap({ $0.element?.results })
+            .map({ characters in
+                let firstSection = SectionOfCharacters(header: "testes", items: characters)
+                return [firstSection]
+            })
+            .asDriver(onErrorJustReturn: [])
+        
+        self.error = result
+            .compactMap { $0.error }
+            .asDriver(onErrorDriveWith: .empty())
     }
     
-    func getCharacter(id: Int) {
-        Task(priority: .background) {
-            let result = await self.service?.getCaracter(id: id)
-            
-            switch result {
-            case .success(let character):
-                DispatchQueue.main.async {
-                    self.gotoCharacterDetails(character: character)
-                }
-                
-            case .failure:
-                self.onFailure?()
-                
-            default:
-                break;
-            }
-        }
+    //MARK: Functions
+    func getCharacters() {
+        
     }
 }

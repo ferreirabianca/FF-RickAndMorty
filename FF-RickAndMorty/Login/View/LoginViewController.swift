@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         else {
             return
         }
-        viewModel?.loginTapped(email: "joao@test.com", password: "teste")
+//        viewModel?.loginTapped(email: "joao@test.com", password: "teste")
     }
     
     //MARK: - Private functions

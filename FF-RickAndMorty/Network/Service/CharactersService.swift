@@ -6,20 +6,18 @@
 //
 
 import Foundation
+import RxSwift
 
-protocol CharactersServiceable {
-    func getCharacters(page: Int?) async -> Result<Characters, RequestError>
-    func getCaracter(id: Int) async -> Result<Character, RequestError>
-}
-
-struct CharactersService: HTTPClient, CharactersServiceable {    
-    func getCharacters(page: Int?) async -> Result<Characters, RequestError> {
-        let endpoint = CharactersEndpoint.characters(page: page ?? 0)
-        return await sendRequest(endpoint: endpoint, responseModel: Characters.self)
-    }
+class CharactersService {
+    //MARK: Properties
+    static let shared = CharactersService()
     
-    func getCaracter(id: Int) async -> Result<Character, RequestError> {
-        let endpoint = CharactersEndpoint.character(id: id)
-        return await sendRequest(endpoint: endpoint, responseModel: Character.self)
+    //MARK: Private Properties
+    private var service = APIService()
+    
+    //MARK: Functions
+    func getCharacters() -> Single<Characters> {
+        let request = Endpoint.characters
+        return service.makeRequest(request.url!, request.method)
     }
 }

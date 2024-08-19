@@ -19,8 +19,6 @@ class LoginCoordinator: Coordinator {
     func start() {
         let vc = LoginViewController()
         vc.viewModel = viewModel
-        vc.viewModel?.service = LoginService()
-        vc.viewModel?.coordinator = self
         
         self.navController.pushViewController(vc, animated: true)
     }

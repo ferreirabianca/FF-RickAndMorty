@@ -6,26 +6,34 @@
 //
 
 import Foundation
+import Alamofire
 
-protocol Endpoint {
-    var scheme: String { get }
-    var host: String { get }
-    var path: String { get }
-    var method: RequestMethod { get }
-    var header: [String: String]? { get }
-    var body: [String: String]? { get }
-}
 
-extension Endpoint {
-    var url: String {
-        return "\(self.scheme)\(self.host)\(self.path)"
+enum Endpoint {
+    case characters
+    case locations
+    case episodes
+    
+    var url: URL? {
+        var components = URLComponents()
+        components.scheme = HTTP.scheme
+        components.host = HTTP.host
+        components.path = "/api\(path)"
+        return components.url
     }
     
-    var scheme: String {
-        return "https://"
+    var method: HTTPMethod {
+        return .get
     }
     
-    var host: String {
-        return "rickandmortyapi.com/api"
+    var path: String {
+        switch self {
+        case .characters:
+            return "/character"
+        case .locations:
+            return "/location"
+        case .episodes:
+            return "/episode"
+        }
     }
 }
